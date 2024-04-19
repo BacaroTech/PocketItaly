@@ -1,0 +1,24 @@
+{
+  "name": "pocket-server",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pocket-server/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "pocket-server:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pocket-server:build:development"
+        },
+        "production": {
+          "buildTarget": "pocket-server:build:production"
+        }
+      }
+    }
+  }
+}

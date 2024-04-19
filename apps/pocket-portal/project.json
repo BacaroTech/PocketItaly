@@ -2,9 +2,9 @@
   "name": "pocket-portal",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "generators": {},
   "sourceRoot": "apps/pocket-portal/src",
   "prefix": "app",
+  "generators": {},
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -12,17 +12,13 @@
         "outputPath": "dist/pocket-portal",
         "index": "apps/pocket-portal/src/index.html",
         "browser": "apps/pocket-portal/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/pocket-portal/tsconfig.app.json",
         "assets": [
           "apps/pocket-portal/src/favicon.ico",
           "apps/pocket-portal/src/assets"
         ],
-        "styles": [
-          "apps/pocket-portal/src/styles.css"
-        ],
+        "styles": ["apps/pocket-portal/src/styles.css"],
         "scripts": []
       },
       "configurations": {
@@ -59,7 +55,10 @@
           "buildTarget": "pocket-portal:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/pocket-portal/proxy.conf.json"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
@@ -70,18 +69,13 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "polyfills": [
-          "zone.js",
-          "zone.js/testing"
-        ],
+        "polyfills": ["zone.js", "zone.js/testing"],
         "tsConfig": "apps/pocket-portal/tsconfig.spec.json",
         "assets": [
           "apps/pocket-portal/src/favicon.ico",
           "apps/pocket-portal/src/assets"
         ],
-        "styles": [
-          "apps/pocket-portal/src/styles.css"
-        ],
+        "styles": ["apps/pocket-portal/src/styles.css"],
         "scripts": []
       }
     }
