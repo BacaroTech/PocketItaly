@@ -9,7 +9,7 @@ export type RouteProps = {
   group: boolean;
   card?: ComponentCardItem;
 };
-export const components: RouteProps[] = [
+export const menuList: RouteProps[] = [
   {
     title: 'Dashboard',
     href: '',
