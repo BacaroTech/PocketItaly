@@ -8,6 +8,8 @@ import { ProfileScreenNavigationProp, RootStackParamList } from './navigation.in
 import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
 import { LoginScreen } from 'src/screens/LoginScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';
+import { YELLOW } from 'src/utils/pocket-palete';
+import RightMenu from 'src/components/RightMenu/RightMenu';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -19,6 +21,8 @@ const PocketNavigation = () => {
                 screenOptions={{
                     headerShadowVisible: false,
                     headerTitle: '',
+                    headerStyle: { backgroundColor: YELLOW },
+                    headerRight: () => <RightMenu />,
 
                 }}
              >

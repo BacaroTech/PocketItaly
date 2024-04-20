@@ -12,7 +12,7 @@ const HomeScreen = ({ }) => {
                 <Image
                     style={tw`m-auto mt-10 mb-5`}
                     source={IMAGElogo} />
-                <Text style={[tw`text-center text-8xl mb-10 `, GeneralStyle.title]}>Login</Text>
+                <Text style={[tw`text-center text-8xl mb-10 `, GeneralStyle.title]}>Home</Text>
                 </View>
         </ScrollView>
     );
