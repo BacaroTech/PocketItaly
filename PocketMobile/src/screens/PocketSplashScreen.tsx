@@ -29,9 +29,11 @@ export const PocketSplashScreen = (): React.JSX.Element => {
 
     return (
         <View style={[tw`h-full`, GeneralStyle.container]}>
+          <View style={[tw`w-1/2`]}>
           <Image
-            style={tw`m-auto mt-50 mb-5 rounded-full`}
+            style={[tw`m-auto mt-50 mb-5 rounded-full`, GeneralStyle.splashLogo]}
             source={IMAGElogo} />
+          </View>
           <Text style={[tw`text-center text-8xl `, GeneralStyle.title]}>Pocket Italy</Text>
           <Text style={[tw`text-center text-5xl mt-3 `, GeneralStyle.title]}>Pocket Italy</Text>
         </View>

@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import {
+    BLACK,
   GREEN,
   ORANGE,
   WHITE,
@@ -11,7 +12,7 @@ export const FontFamilyName = 'IrishGrover-Regular';
 
 const GeneralStyle = StyleSheet.create({
     container: {
-        backgroundColor: GREEN,
+        backgroundColor: ORANGE,
     },
     title: {
         color: ORANGE,
@@ -64,6 +65,15 @@ const GeneralStyle = StyleSheet.create({
     },
     submitYellow: {
         backgroundColor: YELLOW,
+    },
+    splashContainer: {
+
+    },
+    splashLogo: {
+        flex: 1,
+        width: null,
+        height: null,
+        resizeMode: 'contain',  
     },
 });
 
