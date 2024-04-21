@@ -1,11 +1,16 @@
-import { useIsFocused } from '@react-navigation/native';
 import React, { useEffect } from 'react';
-import { View, Image, Text } from 'react-native';
-import { usePocketNavigation } from 'src/core/PokeNavigation';
+
+import {
+  Image,
+  View,
+} from 'react-native';
 import { IRouteNameList } from 'src/core/navigation.interface';
+import { usePocketNavigation } from 'src/core/PokeNavigation';
 import { IMAGElogo } from 'src/images';
 import GeneralStyle from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
+
+import { useIsFocused } from '@react-navigation/native';
 
 export const PocketSplashScreen = (): React.JSX.Element => {
     const navigation = usePocketNavigation();
@@ -14,10 +19,7 @@ export const PocketSplashScreen = (): React.JSX.Element => {
     useEffect(() => {
 
       let page: IRouteNameList = 'Login';
-    //   if (data?.isAuthenticated) {
-    //       page = 'Home';
-    //   }
-
+      
       setTimeout(() => {
         if (isFocused) {
           navigation.navigate(page);
@@ -28,14 +30,12 @@ export const PocketSplashScreen = (): React.JSX.Element => {
     }, [isFocused]);
 
     return (
-        <View style={[tw`h-full`, GeneralStyle.container]}>
-          <View style={[tw`w-1/2`]}>
+        <View style={[tw`h-full flex flex-col justify-center`, GeneralStyle.container]}>
+          <View style={[tw`p-10`]}>
           <Image
-            style={[tw`m-auto mt-50 mb-5 rounded-full`, GeneralStyle.splashLogo]}
+            style={[tw`w-10 mt-10 mb-5`, GeneralStyle.splashLogo]}
             source={IMAGElogo} />
           </View>
-          <Text style={[tw`text-center text-8xl `, GeneralStyle.title]}>Pocket Italy</Text>
-          <Text style={[tw`text-center text-5xl mt-3 `, GeneralStyle.title]}>Pocket Italy</Text>
         </View>
       );
 };

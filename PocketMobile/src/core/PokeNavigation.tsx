@@ -1,15 +1,21 @@
 import React from 'react';
-import {
-    NavigationContainer,
-    useNavigation,
-  } from '@react-navigation/native';
-  import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ProfileScreenNavigationProp, RootStackParamList } from './navigation.interface';
-import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
+
+import RightMenu from 'src/components/RightMenu/RightMenu';
 import { LoginScreen } from 'src/screens/LoginScreen';
+import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';
 import { YELLOW } from 'src/utils/pocket-palete';
-import RightMenu from 'src/components/RightMenu/RightMenu';
+
+import {
+  NavigationContainer,
+  useNavigation,
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import {
+  ProfileScreenNavigationProp,
+  RootStackParamList,
+} from './navigation.interface';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

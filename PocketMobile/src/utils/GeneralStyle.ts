@@ -1,9 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 import {
-    BLACK,
-  GREEN,
+  BLACK,
   ORANGE,
+  PURPLE,
   WHITE,
   YELLOW,
 } from './pocket-palete';
@@ -15,7 +15,7 @@ const GeneralStyle = StyleSheet.create({
         backgroundColor: ORANGE,
     },
     title: {
-        color: ORANGE,
+        color: BLACK,
         fontFamily: FontFamilyName,
     },
     text: {
@@ -26,6 +26,10 @@ const GeneralStyle = StyleSheet.create({
         color: YELLOW,
         fontFamily: FontFamilyName,
     },
+    black: {
+        color: BLACK,
+        fontFamily: FontFamilyName,
+    },
     input: {
         height: 40,
         marginTop: 20,
@@ -33,8 +37,8 @@ const GeneralStyle = StyleSheet.create({
         padding: 5,
         fontSize: 25,
         paddingLeft: 20,
-        color: WHITE,
-        backgroundColor: GREEN,
+        color: PURPLE,
+        backgroundColor: WHITE,
         fontFamily: FontFamilyName,
     },
     submitTrasparent: {
@@ -49,6 +53,14 @@ const GeneralStyle = StyleSheet.create({
     submit: {
         backgroundColor: YELLOW,
         color: ORANGE,
+        margin: 10,
+        height: 40,
+        borderRadius: 15,
+        fontSize: 20,
+    },
+    submitRegistration: {
+        backgroundColor: WHITE,
+        color: PURPLE,
         margin: 10,
         height: 40,
         borderRadius: 15,
@@ -70,10 +82,14 @@ const GeneralStyle = StyleSheet.create({
 
     },
     splashLogo: {
-        flex: 1,
-        width: null,
-        height: null,
-        resizeMode: 'contain',  
+        width: '100%',
+        height: undefined,
+        aspectRatio: 1,
+    },
+    screenLogo: {
+        width: undefined,
+        height: '100%',
+        aspectRatio: 1,
     },
 });
 
