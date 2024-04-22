@@ -1,6 +1,6 @@
 import React from 'react';
 
-import RightMenu from 'src/components/RightMenu/RightMenu';
+import { RightMenu } from 'src/components';
 import { LoginScreen } from 'src/screens/LoginScreen';
 import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';

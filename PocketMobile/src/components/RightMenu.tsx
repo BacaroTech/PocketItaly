@@ -33,4 +33,4 @@ const RightMenuStyle = StyleSheet.create({
     },
 });
 
-export default RightMenu;
+export { RightMenu };
