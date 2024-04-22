@@ -13,7 +13,7 @@ const RightMenu = () => {
     const navigation = usePocketNavigation();
 
     const goMenu = () => {
-        // navigation.navigate('Menu');
+        navigation.navigate('Menu');
     };
 
     return (

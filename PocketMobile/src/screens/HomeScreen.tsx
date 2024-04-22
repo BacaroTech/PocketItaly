@@ -7,7 +7,10 @@ import {
   Text,
   View,
 } from 'react-native';
-import { PokeLayout } from 'src/components';
+import {
+  Block,
+  PokeLayout,
+} from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { IRouteNameList } from 'src/core/navigation.interface';
 import {
@@ -25,25 +28,6 @@ import {
 } from 'src/utils/pocket-palete';
 import tw from 'twrnc';
 
-const Block = ({
-    children,
-    style,
-    flex = 1,
-    row,
-    ...props
-}: any) => {
-    const blockStyle = StyleSheet.flatten([
-        flex !== undefined && { flex },
-        row && { flexDirection: 'row'},
-        style,
-    ]);
-
-    return (
-        <View style={blockStyle} {...props}>
-            {children}
-        </View>
-    );
-};
 const HomeStyle = StyleSheet.create(
     {
         navButton: {

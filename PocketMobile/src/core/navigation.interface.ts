@@ -14,6 +14,7 @@ export type RootStackParamList = {
     PhotoAnalysis: { name: string } | undefined;
     Report: { name: string } | undefined;
     Education: { name: string } | undefined;
+    Menu: { name: string } | undefined;
 };
 
 export type RouteNameList = {
@@ -26,7 +27,8 @@ export type RouteNameList = {
     'CodeAnalysis': undefined,
     'PhotoAnalysis': undefined,
     'Report': undefined,
-    'Education': undefined
+    'Education': undefined,
+    'Menu': undefined,
 
 }
 export type RootStackParamNameList = keyof RootStackParamList;

@@ -5,6 +5,7 @@ import {
   CodeAnalysisScreen,
   EducationScreen,
   LinkAnalysisScreen,
+  MenuScreen,
   PhotoAnalysisScreen,
   ProfileScreen,
   ReportScreen,
@@ -72,6 +73,13 @@ const PocketNavigation = () => {
                     }}
                 />
                 <Stack.Screen
+                    name="Menu"
+                    component={MenuScreen}
+                    options={{
+                        title: 'Menu',
+                    }}
+                />
+                <Stack.Screen
                     name="Profile"
                     component={ProfileScreen}
                     options={{
@@ -120,5 +128,5 @@ const PocketNavigation = () => {
 const usePocketNavigation = () => {
     const navigation = useNavigation<ProfileScreenNavigationProp>();
     return navigation;
-}
+};
 export { PocketNavigation, usePocketNavigation };
