@@ -1,16 +1,74 @@
 import React from 'react';
 
 import {
+  Image,
   Pressable,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
 import { PokeLayout } from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { IRouteNameList } from 'src/core/navigation.interface';
-import GeneralStyle from 'src/utils/GeneralStyle';
+import {
+  IMAGEcamera,
+  IMAGEcode,
+  IMAGEedu,
+  IMAGElink,
+  IMAGEprofile,
+  IMAGEreport,
+} from 'src/images';
+import {
+  BLACK,
+  WHITE,
+  YELLOW,
+} from 'src/utils/pocket-palete';
 import tw from 'twrnc';
 
+const Block = ({
+    children,
+    style,
+    flex = 1,
+    row,
+    ...props
+}: any) => {
+    const blockStyle = StyleSheet.flatten([
+        flex !== undefined && { flex },
+        row && { flexDirection: 'row'},
+        style,
+    ]);
+
+    return (
+        <View style={blockStyle} {...props}>
+            {children}
+        </View>
+    );
+};
+const HomeStyle = StyleSheet.create(
+    {
+        navButton: {
+            borderRadius: 100,
+            backgroundColor: YELLOW,
+            padding: 0
+        },
+        iconButton: {
+            flex: 1,
+            width: undefined,
+            height: '100%',
+            aspectRatio: 1,
+        },
+        containerButton: {
+            padding: 20,
+        },
+        title: {
+            color: WHITE,
+        },
+        textBtn: {
+            fontSize: 20,
+            color: BLACK,
+        }
+    },
+);
 const HomeScreen = ({ }) => {
     const navigation = usePocketNavigation();
 
@@ -19,38 +77,75 @@ const HomeScreen = ({ }) => {
     };
     return (
         <PokeLayout>
-            <Text style={[tw`text-center text-xl mb-10 `, GeneralStyle.title]}>Home</Text>
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('LinkAnalysis')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Analisi Link</Text>
-                </Pressable>
-            </View>
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('CodeAnalysis')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Analisi Codice</Text>
-                </Pressable>
-            </View>
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('CodeAnalysis')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Analisi Visiva</Text>
-                </Pressable>
-            </View>
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('Profile')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Profilo</Text>
-                </Pressable>
-            </View>
+            <View style={[tw`mx-10 my-5`]}>
+                <Text style={[tw`text-center text-xl mb-5`, HomeStyle.title]}>La mia homepage</Text>
+                <Block row>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable onPress={() => goTo('LinkAnalysis')}>
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGElink} />
+                            </Pressable>
+                        </View>
+                    </Block>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable onPress={() => goTo('CodeAnalysis')}>
 
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('Report')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Report</Text>
-                </Pressable>
-            </View>
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGEcode} />
 
-            <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                <Pressable onPress={() => goTo('Education')}>
-                    <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Istruzione</Text>
-                </Pressable>
+                            </Pressable>
+                        </View>
+                    </Block>
+                </Block>
+                <Block row>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable onPress={() => goTo('PhotoAnalysis')}>
+
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGEcamera} />
+
+                            </Pressable>
+                        </View>
+                    </Block>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable style={[tw``]} onPress={() => goTo('Profile')}>
+
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGEprofile} />
+
+                            </Pressable>
+                        </View>
+                    </Block>
+                </Block>
+                <Block row>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable onPress={() => goTo('Report')}>
+
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGEreport} />
+                            </Pressable>
+                        </View>
+                    </Block>
+                    <Block style={[HomeStyle.containerButton]}>
+                        <View style={[HomeStyle.navButton]} >
+                            <Pressable style={[tw``]} onPress={() => goTo('Education')}>
+                                <Image
+                                    style={[HomeStyle.iconButton]}
+                                    source={IMAGEedu} />
+                            </Pressable>
+                        </View>
+                    </Block>
+                </Block>
             </View>
         </PokeLayout>
     );
