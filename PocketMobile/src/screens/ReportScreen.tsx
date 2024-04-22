@@ -2,23 +2,18 @@ import React from 'react';
 
 import { Text } from 'react-native';
 import { PokeLayout } from 'src/components';
-import { usePocketNavigation } from 'src/core';
-import { IRouteNameList } from 'src/core/navigation.interface';
+import { IMAGEreport } from 'src/images';
 import GeneralStyle from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
-const EducationScreen = ({ }) => {
-    const navigation = usePocketNavigation();
+const ReportScreen = ({ }) => {
 
-    const goTo = (dest: IRouteNameList) => {
-        navigation.navigate(dest);
-    };
     return (
-        <PokeLayout>
+        <PokeLayout logo={IMAGEreport}>
             <Text style={[tw`text-center text-xl mb-10 `, GeneralStyle.title]}>Report</Text>
         </PokeLayout>
     );
 
 };
 
-export { EducationScreen as ReportScreen };
+export { ReportScreen };

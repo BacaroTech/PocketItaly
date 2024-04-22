@@ -18,6 +18,10 @@ const GeneralStyle = StyleSheet.create({
         color: BLACK,
         fontFamily: FontFamilyName,
     },
+    white: {
+        color: WHITE,
+        fontFamily: FontFamilyName,
+    },
     text: {
         color: WHITE,
         fontFamily: FontFamilyName,

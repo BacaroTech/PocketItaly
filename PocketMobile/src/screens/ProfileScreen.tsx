@@ -2,19 +2,14 @@ import React from 'react';
 
 import { Text } from 'react-native';
 import { PokeLayout } from 'src/components';
-import { usePocketNavigation } from 'src/core';
-import { IRouteNameList } from 'src/core/navigation.interface';
+import { IMAGEprofile } from 'src/images';
 import GeneralStyle from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
 const ProfileScreen = ({ }) => {
-    const navigation = usePocketNavigation();
 
-    const goTo = (dest: IRouteNameList) => {
-        navigation.navigate(dest);
-    };
     return (
-        <PokeLayout>
+        <PokeLayout logo={IMAGEprofile}>
             <Text style={[tw`text-center text-xl mb-10 `, GeneralStyle.title]}>Profilo</Text>
         </PokeLayout>
     );

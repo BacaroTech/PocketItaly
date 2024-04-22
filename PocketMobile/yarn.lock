@@ -6275,6 +6275,11 @@ react-native-storage@^1.0.1:
     opencollective "^1.0.3"
     opencollective-postinstall "^2.0.2"
 
+react-native-vision-camera@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npmjs.org/react-native-vision-camera/-/react-native-vision-camera-4.0.1.tgz"
+  integrity sha512-TuXLw/ak+LPaJOCuUaYG1g2EmTAEEeIVAhSbCsqEHlklMjkO0oRBGcPC6HpKw3++jkcKRBVVyY48HbB002UZfg==
+
 react-native@*, "react-native@^0.0.0-0 || >=0.60 <1.0", react-native@>=0.63.0, react-native@0.73.7:
   version "0.73.7"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.73.7.tgz"

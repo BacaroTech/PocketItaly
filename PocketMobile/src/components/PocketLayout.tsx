@@ -29,7 +29,14 @@ const PokeLayoutStyle = StyleSheet.create({
         aspectRatio: 1,
     },
 });
-const PokeLayout = ({ children }: { children: ReactNode }) => {
+interface PokeLayoutProp {
+    logo?: any,
+    children: ReactNode
+}
+const PokeLayout = ({
+    children,
+    logo = IMAGElogo,
+ }: PokeLayoutProp) => {
 
     return (
         <ScrollView style={[PokeLayoutStyle.scrollView]}
@@ -38,7 +45,7 @@ const PokeLayout = ({ children }: { children: ReactNode }) => {
                 tw`h-52 flex items-center p-2 mt-10`]}>
                 <Image
                     style={[PokeLayoutStyle.screenLogo]}
-                    source={IMAGElogo} />
+                    source={logo} />
             </View>
             <View style={[PokeLayoutStyle.bodyView]}>
                 {children}

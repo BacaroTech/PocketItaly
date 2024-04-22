@@ -13,6 +13,7 @@ import {
 import { HomeScreen } from 'src/screens/HomeScreen';
 import { LoginScreen } from 'src/screens/LoginScreen';
 import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
+import { ReadCodeScreen } from 'src/screens/ReadCodeScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';
 import { YELLOW } from 'src/utils/pocket-palete';
 
@@ -119,6 +120,13 @@ const PocketNavigation = () => {
                     component={PhotoAnalysisScreen}
                     options={{
                         title: 'Analisi Visiva',
+                    }}
+                />
+                <Stack.Screen
+                    name="CameraCode"
+                    component={ReadCodeScreen}
+                    options={{
+                        title: 'Camera Code',
                     }}
                 />
             </Stack.Navigator>
