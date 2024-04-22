@@ -1,15 +1,19 @@
-
 import {
-    NativeStackNavigationProp,
-    NativeStackScreenProps,
-  } from '@react-navigation/native-stack';
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 export type RootStackParamList = {
     Splash: { name: string } | undefined;
     Home: { name: string } | undefined;
     Profile: { name: string } | undefined;
     Login: { name: string } | undefined;
-    Register: { name: string } | undefined,
+    Register: { name: string } | undefined;
+    LinkAnalysis: { name: string } | undefined;
+    CodeAnalysis: { name: string } | undefined;
+    PhotoAnalysis: { name: string } | undefined;
+    Report: { name: string } | undefined;
+    Education: { name: string } | undefined;
 };
 
 export type RouteNameList = {
@@ -18,6 +22,11 @@ export type RouteNameList = {
     'Splash': undefined,
     'Login': undefined,
     'Register': undefined,
+    'LinkAnalysis': undefined,
+    'CodeAnalysis': undefined,
+    'PhotoAnalysis': undefined,
+    'Report': undefined,
+    'Education': undefined
 
 }
 export type RootStackParamNameList = keyof RootStackParamList;

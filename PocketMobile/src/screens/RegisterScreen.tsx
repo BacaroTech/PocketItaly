@@ -57,10 +57,10 @@ const RegisterScreen = ({ }) => {
                     defaultValue={password}
                 />
                 <View
-                    style={[tw`mt-5`, GeneralStyle.submit, GeneralStyle.submitOrange]}
+                    style={[tw`mt-5`, GeneralStyle.submit, GeneralStyle.submitYellow]}
                 ><Pressable
                     onPress={() => registerFunction()}>
-                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.yellow]}>Registrati</Text>
+                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Registrati</Text>
                     </Pressable>
                 </View>
             </SafeAreaView>

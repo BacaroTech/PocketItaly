@@ -19,7 +19,7 @@ export const PocketSplashScreen = (): React.JSX.Element => {
     useEffect(() => {
 
       let page: IRouteNameList = 'Login';
-      
+
       setTimeout(() => {
         if (isFocused) {
           navigation.navigate(page);

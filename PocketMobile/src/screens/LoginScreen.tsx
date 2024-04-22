@@ -39,8 +39,6 @@ const LoginStyle = StyleSheet.create({
     },
 });
 const LoginScreen = ({ }) => {
-    console.log('LOGIN');
-
     const navigation = usePocketNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
