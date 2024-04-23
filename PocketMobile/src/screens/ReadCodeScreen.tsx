@@ -1,45 +1,52 @@
 import React, {
-  useCallback,
-  useRef,
-  useState,
+    useCallback,
+    useRef,
+    useState,
 } from 'react';
 
 import {
-  Alert,
-  AlertButton,
-  Linking,
-  StyleSheet,
-  Text,
-  View,
+    Alert,
+    AlertButton,
+    Linking,
+    StyleSheet,
+    Text,
+    View,
 } from 'react-native';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import { createIconSet } from 'react-native-vector-icons';
 import {
-  Camera,
-  Code,
-  useCameraDevice,
-  useCameraPermission,
-  useCodeScanner,
+    Camera,
+    Code,
+    useCameraDevice,
+    useCameraPermission,
+    useCodeScanner,
 } from 'react-native-vision-camera';
 import {
-  PokeLayout,
-  StatusBarBlurBackground,
+    PokeLayout,
+    StatusBarBlurBackground,
 } from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { useIsForeground } from 'src/hooks';
 import { glyphMap } from 'src/icons';
 import { IMAGEcode } from 'src/images';
 import {
-  CONTENT_SPACING,
-  CONTROL_BUTTON_SIZE,
-  ORANGE,
-  PURPLE,
-  SAFE_AREA_PADDING,
+    BLACK,
+    CAPTURE_BUTTON_SIZE,
+    CONTENT_SPACING,
+    CONTROL_BUTTON_SIZE,
+    ORANGE,
+    PURPLE,
+    SAFE_AREA_PADDING,
+    SCREEN_HEIGHT,
+    SCREEN_WIDTH,
+    WHITE,
+    YELLOW,
 } from 'src/utils';
 import { GeneralStyle } from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
 import { useIsFocused } from '@react-navigation/native';
+import StaticSafeAreaInsets from 'react-native-static-safe-area-insets';
 
 const IonIcon = createIconSet(glyphMap, 'Ionicons', 'Ionicons.ttf');
 
@@ -62,26 +69,13 @@ const showCodeAlert = (value: string, onDismissed: () => void): void => {
     }
     Alert.alert('Scanned Code', value, buttons);
 };
-const CameraLayoutStyle = StyleSheet.create({
-    scrollView: { flex: 1, backgroundColor: ORANGE },
-    scrollContainerStyle: { flexGrow: 1 },
-    bodyView: {
-        flex: 2, top: 10, backgroundColor: PURPLE,
+const BORDER_WIDTH = CAPTURE_BUTTON_SIZE * 0.1;
 
-        borderTopLeftRadius: 90,
-        borderTopRightRadius: 90,
-    },
-    screenLogo: {
-        flex: 1,
-        width: undefined,
-        height: '100%',
-        aspectRatio: 1,
-    },
-});
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'black',
+        height: SCREEN_HEIGHT
     },
     button: {
         marginBottom: CONTENT_SPACING,
@@ -102,6 +96,51 @@ const styles = StyleSheet.create({
         left: SAFE_AREA_PADDING.paddingLeft,
         top: SAFE_AREA_PADDING.paddingTop,
     },
+    // enterButton: {
+    //     position: 'absolute',
+    //     width: 100,
+    //     height: 100,
+    //     margin: SAFE_AREA_PADDING.paddingLeft,
+    //     bottom: SAFE_AREA_PADDING.paddingTop,
+    // },
+    codeRead: {
+        padding: 4,
+        margin: 5,
+        borderColor: YELLOW,
+        borderRadius: 15,
+        borderWidth: 1,
+        borderStyle: 'solid',
+    },
+    codeReadEnter: {
+        backgroundColor: YELLOW,
+        color: BLACK,
+        borderColor: YELLOW,
+        borderRadius: 50,
+        borderWidth: 1,
+        borderStyle: 'solid',
+    },
+    flex: {
+        flex: 1,
+    },
+    shadow: {
+        position: 'absolute',
+        width: CAPTURE_BUTTON_SIZE,
+        height: CAPTURE_BUTTON_SIZE,
+        borderRadius: CAPTURE_BUTTON_SIZE / 2,
+        backgroundColor: YELLOW,
+    },
+    buttonCapture: {
+        width: CAPTURE_BUTTON_SIZE,
+        height: CAPTURE_BUTTON_SIZE,
+        borderRadius: CAPTURE_BUTTON_SIZE / 2,
+        borderWidth: BORDER_WIDTH,
+        borderColor: 'white',
+    },
+    contentButton: {
+        position: 'absolute',
+        alignSelf: 'center',
+        top: 100,
+    }
 });
 const PermissionsPage = () => {
     return (
@@ -133,6 +172,7 @@ const ReadCodeScreen = ({ }) => {
 
     // 3. (Optional) enable a torch setting
     const [torch, setTorch] = useState(false);
+    const [codeRead, setCodeRead] = useState<string | null>(null);
 
     // 4. On code scanned, we show an aler to the user
     const isShowingAlert = useRef(false);
@@ -141,32 +181,24 @@ const ReadCodeScreen = ({ }) => {
         const value = codes[0]?.value;
         if (value == null) { return; }
         if (isShowingAlert.current) { return; }
-        showCodeAlert(value, () => {
-            isShowingAlert.current = false;
-        });
-        isShowingAlert.current = true;
+        setCodeRead(value);
+        // showCodeAlert(value, () => {
+        //     isShowingAlert.current = false;
+        // });
+        // isShowingAlert.current = true;
     }, []);
+    const enterCode = () => {
+        if (codeRead) {
+            console.log("Inserisci ")
+            navigation.navigate('CodeAnalysis', { codeRead: codeRead, name: 'CodeAnalysis' });
+        }
+    };
     // 5. Initialize the Code Scanner to scan QR codes and Barcodes
     const codeScanner = useCodeScanner({
         codeTypes: ['qr', 'ean-13'],
         onCodeScanned: onCodeScanned,
     });
-    // const [codeScanned, setCodeScanned] = useState<string | null | undefined>(null);
-    // const [codes, setCodes] = useState<Code[]>([]);
-    // const codeScanner = useCodeScanner({
-    //     codeTypes: ['qr', 'ean-13'],
-    //     onCodeScanned: (codes) => {
-    //         console.log(`Scanned ${codes.length} codes!`);
-    //         if (codes.length) {
 
-    //             setCodeScanned(codes[0].value);
-
-
-    //             console.log(`Code ${codes[0].value}`);
-    //         }
-    //     },
-    // });
-    // const device = useCameraDevice('back');
     const { hasPermission } = useCameraPermission();
 
     if (!hasPermission) { return <PermissionsPage />; }
@@ -189,14 +221,27 @@ const ReadCodeScreen = ({ }) => {
 
             <View style={styles.rightButtonRow}>
                 <PressableOpacity style={styles.button} onPress={() => setTorch(!torch)} disabledOpacity={0.4}>
-                     <IonIcon name={torch ? 'flash' : 'flash-off'} color="white" size={24} /> 
+                    <IonIcon name={torch ? 'flash' : 'flash-off'} color="white" size={24} />
                 </PressableOpacity>
             </View>
 
             {/* Back Button */}
-            <PressableOpacity style={styles.backButton} onPress={navigation.goBack}>
-                 <IonIcon name="chevron-back" color="white" size={35} />
-            </PressableOpacity>
+            {codeRead && <View style={styles.backButton}>
+                <View style={styles.codeRead}>
+                    <Text>{codeRead}</Text>
+                </View>
+            </View>}
+            {codeRead &&
+
+                <PressableOpacity style={styles.contentButton} onPress={() => enterCode()}>
+                    <View style={styles.flex}>
+                        <View style={styles.shadow}>
+                            <View style={styles.buttonCapture} />
+                        </View>
+                    </View>
+                </PressableOpacity>
+            }
+
         </View>
 
     );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   Pressable,
@@ -14,7 +14,11 @@ import { PURPLE } from 'src/utils';
 import GeneralStyle from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
-const CodeAnalysisScreen = ({ }) => {
+const CodeAnalysisScreen = (prop: any) => {
+    const {
+        codeRead = '',
+    } = prop?.route?.params || {};
+    console.log("CodeAnalysisScreen",codeRead)
     const navigation = usePocketNavigation();
     const [code, setCode] = useState('');
     const readCode = () => {
@@ -23,6 +27,10 @@ const CodeAnalysisScreen = ({ }) => {
     const sendCode = () => {
 
     }
+    useEffect(()=> {
+        console.log("update code", codeRead)
+        setCode(codeRead)
+    },[codeRead])
     return (
         <PokeLayout logo={IMAGEcode}>
             <SafeAreaView style={[tw` mx-10 my-10 mb-20 flex flex-col gap-1`]}>
@@ -39,7 +47,7 @@ const CodeAnalysisScreen = ({ }) => {
                     placeholderTextColor={PURPLE}
                     onChangeText={valueUpdated => setCode(valueUpdated)}
                     defaultValue={code}
-                    secureTextEntry={true}
+                    value={code}
                 />
                 <View style={[tw`mt-5`, GeneralStyle.submit]} >
                     <Pressable onPress={() => sendCode()}>

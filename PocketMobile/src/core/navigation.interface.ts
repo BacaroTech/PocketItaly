@@ -10,7 +10,7 @@ export type RootStackParamList = {
     Login: { name: string } | undefined;
     Register: { name: string } | undefined;
     LinkAnalysis: { name: string } | undefined;
-    CodeAnalysis: { name: string } | undefined;
+    CodeAnalysis: { name: string, codeRead?: string } | undefined;
     PhotoAnalysis: { name: string } | undefined;
     Report: { name: string } | undefined;
     Education: { name: string } | undefined;
