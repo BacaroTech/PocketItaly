@@ -1,37 +1,48 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useRef,
+  useState,
+} from 'react';
 
 import {
-    Alert,
-    AlertButton,
-    Linking,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
+  Alert,
+  AlertButton,
+  Linking,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import { createIconSet } from 'react-native-vector-icons';
 import {
-    Camera,
-    Code,
-    useCameraDevice,
-    useCameraPermission,
-    useCodeScanner,
+  Camera,
+  Code,
+  useCameraDevice,
+  useCameraPermission,
+  useCodeScanner,
 } from 'react-native-vision-camera';
-import { PokeLayout, StatusBarBlurBackground } from 'src/components';
+import {
+  PokeLayout,
+  StatusBarBlurBackground,
+} from 'src/components';
+import { usePocketNavigation } from 'src/core';
+import { useIsForeground } from 'src/hooks';
+import { glyphMap } from 'src/icons';
 import { IMAGEcode } from 'src/images';
 import {
-    CONTENT_SPACING,
-    CONTROL_BUTTON_SIZE,
-    ORANGE,
-    PURPLE,
-    SAFE_AREA_PADDING,
+  CONTENT_SPACING,
+  CONTROL_BUTTON_SIZE,
+  ORANGE,
+  PURPLE,
+  SAFE_AREA_PADDING,
 } from 'src/utils';
 import { GeneralStyle } from 'src/utils/GeneralStyle';
-import { PressableOpacity } from 'react-native-pressable-opacity';
-// import IonIcon from '@react-native-vector-icons/ionicons';
 import tw from 'twrnc';
+
 import { useIsFocused } from '@react-navigation/native';
-import { useIsForeground } from 'src/hooks';
-import { usePocketNavigation } from 'src/core';
+
+const IonIcon = createIconSet(glyphMap, 'Ionicons', 'Ionicons.ttf');
+
 const showCodeAlert = (value: string, onDismissed: () => void): void => {
     const buttons: AlertButton[] = [
         {
@@ -178,15 +189,13 @@ const ReadCodeScreen = ({ }) => {
 
             <View style={styles.rightButtonRow}>
                 <PressableOpacity style={styles.button} onPress={() => setTorch(!torch)} disabledOpacity={0.4}>
-                    {/* <IonIcon name={torch ? 'flash' : 'flash-off'} color="white" size={24} /> */}
-                    {torch ? <Text>FLASH</Text> : <Text>FLASH OFF</Text>}
+                     <IonIcon name={torch ? 'flash' : 'flash-off'} color="white" size={24} /> 
                 </PressableOpacity>
             </View>
 
             {/* Back Button */}
             <PressableOpacity style={styles.backButton} onPress={navigation.goBack}>
-                {/* <IonIcon name="chevron-back" color="white" size={35} /> */}
-                 <Text>BACK</Text>
+                 <IonIcon name="chevron-back" color="white" size={35} />
             </PressableOpacity>
         </View>
 
