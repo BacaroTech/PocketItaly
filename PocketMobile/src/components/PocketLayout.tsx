@@ -47,7 +47,7 @@ const PokeLayout = ({
             <View style={[
                 tw`h-52 flex items-center p-2 mt-10`]}>
                 {
-                    textHeader ? <Image
+                    !textHeader ? <Image
                         style={[PokeLayoutStyle.screenLogo]}
                         source={logo} /> : <Text>{textHeader}</Text>
                 }

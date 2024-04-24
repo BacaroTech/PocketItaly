@@ -25,7 +25,7 @@ const CodeAnalysisScreen = (prop: any) => {
         navigation.navigate('CameraCode');
     }
     const sendCode = () => {
-
+        navigation.navigate('Loader');
     }
     useEffect(()=> {
         console.log("update code", codeRead)
