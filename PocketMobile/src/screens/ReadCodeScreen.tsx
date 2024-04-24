@@ -5,9 +5,6 @@ import React, {
 } from 'react';
 
 import {
-    Alert,
-    AlertButton,
-    Linking,
     StyleSheet,
     Text,
     View,
@@ -23,7 +20,6 @@ import {
 } from 'react-native-vision-camera';
 import {
     PokeLayout,
-    StatusBarBlurBackground,
 } from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { useIsForeground } from 'src/hooks';
@@ -34,48 +30,23 @@ import {
     CAPTURE_BUTTON_SIZE,
     CONTENT_SPACING,
     CONTROL_BUTTON_SIZE,
-    ORANGE,
-    PURPLE,
     SAFE_AREA_PADDING,
-    SCREEN_HEIGHT,
-    SCREEN_WIDTH,
-    WHITE,
     YELLOW,
 } from 'src/utils';
 import { GeneralStyle } from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
 import { useIsFocused } from '@react-navigation/native';
-import StaticSafeAreaInsets from 'react-native-static-safe-area-insets';
 
 const IonIcon = createIconSet(glyphMap, 'Ionicons', 'Ionicons.ttf');
 
-const showCodeAlert = (value: string, onDismissed: () => void): void => {
-    const buttons: AlertButton[] = [
-        {
-            text: 'Close',
-            style: 'cancel',
-            onPress: onDismissed,
-        },
-    ];
-    if (value.startsWith('http')) {
-        buttons.push({
-            text: 'Open URL',
-            onPress: () => {
-                Linking.openURL(value);
-                onDismissed();
-            },
-        });
-    }
-    Alert.alert('Scanned Code', value, buttons);
-};
 const BORDER_WIDTH = CAPTURE_BUTTON_SIZE * 0.1;
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'black',
-        height: SCREEN_HEIGHT
+        // height: SCREEN_HEIGHT
     },
     button: {
         marginBottom: CONTENT_SPACING,
@@ -104,9 +75,10 @@ const styles = StyleSheet.create({
     //     bottom: SAFE_AREA_PADDING.paddingTop,
     // },
     codeRead: {
-        padding: 4,
+        padding: 10,
         margin: 5,
         borderColor: YELLOW,
+        backgroundColor: BLACK,
         borderRadius: 15,
         borderWidth: 1,
         borderStyle: 'solid',
@@ -123,7 +95,6 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     shadow: {
-        position: 'absolute',
         width: CAPTURE_BUTTON_SIZE,
         height: CAPTURE_BUTTON_SIZE,
         borderRadius: CAPTURE_BUTTON_SIZE / 2,
@@ -139,8 +110,8 @@ const styles = StyleSheet.create({
     contentButton: {
         position: 'absolute',
         alignSelf: 'center',
-        top: 100,
-    }
+        bottom: SAFE_AREA_PADDING.paddingBottom,
+    },
 });
 const PermissionsPage = () => {
     return (
@@ -217,7 +188,7 @@ const ReadCodeScreen = ({ }) => {
                 />
             )}
 
-            <StatusBarBlurBackground />
+            {/* <StatusBarBlurBackground /> */}
 
             <View style={styles.rightButtonRow}>
                 <PressableOpacity style={styles.button} onPress={() => setTorch(!torch)} disabledOpacity={0.4}>
@@ -226,18 +197,15 @@ const ReadCodeScreen = ({ }) => {
             </View>
 
             {/* Back Button */}
-            {codeRead && <View style={styles.backButton}>
+            <View style={styles.backButton}>
                 <View style={styles.codeRead}>
-                    <Text>{codeRead}</Text>
+                    <Text>{codeRead || 'Inquadra un codice o un QR'}</Text>
                 </View>
-            </View>}
+            </View>
             {codeRead &&
-
                 <PressableOpacity style={styles.contentButton} onPress={() => enterCode()}>
-                    <View style={styles.flex}>
-                        <View style={styles.shadow}>
-                            <View style={styles.buttonCapture} />
-                        </View>
+                    <View style={styles.shadow}>
+                        <View style={styles.buttonCapture} />
                     </View>
                 </PressableOpacity>
             }

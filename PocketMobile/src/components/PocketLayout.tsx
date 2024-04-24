@@ -1,15 +1,16 @@
 import React, { ReactNode } from 'react';
 
 import {
-  Image,
-  ScrollView,
-  StyleSheet,
-  View,
+    Image,
+    ScrollView,
+    StyleSheet,
+    Text,
+    View,
 } from 'react-native';
 import { IMAGElogo } from 'src/images';
 import {
-  ORANGE,
-  PURPLE,
+    ORANGE,
+    PURPLE,
 } from 'src/utils/pocket-palete';
 import tw from 'twrnc';
 
@@ -30,22 +31,26 @@ const PokeLayoutStyle = StyleSheet.create({
     },
 });
 interface PokeLayoutProp {
+    textHeader?: string | null,
     logo?: any,
     children: ReactNode
 }
 const PokeLayout = ({
+    textHeader = null,
     children,
     logo = IMAGElogo,
- }: PokeLayoutProp) => {
+}: PokeLayoutProp) => {
 
     return (
         <ScrollView style={[PokeLayoutStyle.scrollView]}
             contentContainerStyle={PokeLayoutStyle.scrollContainerStyle}>
             <View style={[
                 tw`h-52 flex items-center p-2 mt-10`]}>
-                <Image
-                    style={[PokeLayoutStyle.screenLogo]}
-                    source={logo} />
+                {
+                    textHeader ? <Image
+                        style={[PokeLayoutStyle.screenLogo]}
+                        source={logo} /> : <Text>{textHeader}</Text>
+                }
             </View>
             <View style={[PokeLayoutStyle.bodyView]}>
                 {children}

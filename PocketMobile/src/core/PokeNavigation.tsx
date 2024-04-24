@@ -27,6 +27,8 @@ import {
   ProfileScreenNavigationProp,
   RootStackParamList,
 } from './navigation.interface';
+import { LoaderScreen } from 'src/screens/LoaderScreen';
+import { ResultAnalysisScreen } from 'src/screens/ResultAnalysisScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -127,6 +129,20 @@ const PocketNavigation = () => {
                     component={ReadCodeScreen}
                     options={{
                         title: 'Camera Code',
+                    }}
+                />
+                                <Stack.Screen
+                    name="Loader"
+                    component={LoaderScreen}
+                    options={{
+                        title: 'Caricamento',
+                    }}
+                />
+                                <Stack.Screen
+                    name="Result"
+                    component={ResultAnalysisScreen}
+                    options={{
+                        title: 'Risultato',
                     }}
                 />
             </Stack.Navigator>
