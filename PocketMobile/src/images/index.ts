@@ -6,3 +6,4 @@ export const IMAGEedu = require('../../assets/pocket-edu.png');
 export const IMAGElink = require('../../assets/pocket-link.png');
 export const IMAGEprofile = require('../../assets/pocket-profile.png');
 export const IMAGEreport = require('../../assets/pocket-report.png');
+export const IMAGELoader = require('../../assets/loader.png');

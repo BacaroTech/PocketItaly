@@ -33,11 +33,16 @@ const HomeStyle = StyleSheet.create(
         navButton: {
             borderRadius: 100,
             backgroundColor: YELLOW,
-            padding: 0,
+            paddingTop: 20,
+            paddingBottom: 20,
+            padding: 5,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
         },
         iconButton: {
             flex: 1,
-            width: undefined,
+            width: 70,
             height: '100%',
             aspectRatio: 1,
         },
@@ -48,11 +53,31 @@ const HomeStyle = StyleSheet.create(
             color: WHITE,
         },
         textBtn: {
-            fontSize: 20,
+            marginTop: 20,
+            fontSize: 10,
             color: BLACK,
+            textAlign: 'center',
+            fontWeight: '700',
         },
     },
 );
+type HomeBtnProp = {
+    goTo: (dest: IRouteNameList) => void,
+    text: string,
+    logo: any
+}
+const HomeBtn = ({ goTo, text, logo }: HomeBtnProp) => {
+    return (
+        <Block style={[HomeStyle.containerButton]}>
+            <Pressable style={[HomeStyle.navButton]} onPress={() => goTo('LinkAnalysis')}>
+                <Image
+                    style={[HomeStyle.iconButton]}
+                    source={logo} />
+                <Text style={[HomeStyle.textBtn]}>{text}</Text>
+            </Pressable>
+        </Block>
+    );
+};
 const HomeScreen = ({ }) => {
     const navigation = usePocketNavigation();
 
@@ -62,73 +87,43 @@ const HomeScreen = ({ }) => {
     return (
         <PokeLayout>
             <View style={[tw`mx-10 my-5`]}>
-                <Text style={[tw`text-center text-xl mb-5`, HomeStyle.title]}>La mia homepage</Text>
+                <Text style={[tw`text-center text-2xl mb-5 font-extrabold`, HomeStyle.title]}>La mia homepage</Text>
                 <Block row>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable onPress={() => goTo('LinkAnalysis')}>
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGElink} />
-                            </Pressable>
-                        </View>
-                    </Block>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable onPress={() => goTo('CodeAnalysis')}>
-
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGEcode} />
-
-                            </Pressable>
-                        </View>
-                    </Block>
+                    <HomeBtn
+                        goTo={() => goTo('LinkAnalysis')}
+                        text={'Analisi\nLink'}
+                        logo={IMAGElink}
+                    />
+                    <HomeBtn
+                        goTo={() => goTo('CodeAnalysis')}
+                        text={'Analisi\nCodice'}
+                        logo={IMAGEcode}
+                    />
                 </Block>
                 <Block row>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable onPress={() => goTo('PhotoAnalysis')}>
+                    <HomeBtn
+                        goTo={() => goTo('PhotoAnalysis')}
+                        text={'Analisi\nVisiva'}
+                        logo={IMAGEcamera}
+                    />
+                    <HomeBtn
+                        goTo={() => goTo('Profile')}
+                        text={'Profilo'}
+                        logo={IMAGEprofile}
+                    />
 
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGEcamera} />
-
-                            </Pressable>
-                        </View>
-                    </Block>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable style={[tw``]} onPress={() => goTo('Profile')}>
-
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGEprofile} />
-
-                            </Pressable>
-                        </View>
-                    </Block>
                 </Block>
                 <Block row>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable onPress={() => goTo('Report')}>
-
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGEreport} />
-                            </Pressable>
-                        </View>
-                    </Block>
-                    <Block style={[HomeStyle.containerButton]}>
-                        <View style={[HomeStyle.navButton]} >
-                            <Pressable style={[tw``]} onPress={() => goTo('Education')}>
-                                <Image
-                                    style={[HomeStyle.iconButton]}
-                                    source={IMAGEedu} />
-                            </Pressable>
-                        </View>
-                    </Block>
+                    <HomeBtn
+                        goTo={() => goTo('Report')}
+                        text={'Report'}
+                        logo={IMAGEreport}
+                    />
+                    <HomeBtn
+                        goTo={() => goTo('Education')}
+                        text={'Istruzione'}
+                        logo={IMAGEedu}
+                    />
                 </Block>
             </View>
         </PokeLayout>

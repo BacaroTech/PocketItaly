@@ -11,10 +11,12 @@ import {
   ReportScreen,
 } from 'src/screens';
 import { HomeScreen } from 'src/screens/HomeScreen';
+import { LoaderScreen } from 'src/screens/LoaderScreen';
 import { LoginScreen } from 'src/screens/LoginScreen';
 import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
 import { ReadCodeScreen } from 'src/screens/ReadCodeScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';
+import { ResultAnalysisScreen } from 'src/screens/ResultAnalysisScreen';
 import { YELLOW } from 'src/utils/pocket-palete';
 
 import {
@@ -27,8 +29,6 @@ import {
   ProfileScreenNavigationProp,
   RootStackParamList,
 } from './navigation.interface';
-import { LoaderScreen } from 'src/screens/LoaderScreen';
-import { ResultAnalysisScreen } from 'src/screens/ResultAnalysisScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -131,14 +131,15 @@ const PocketNavigation = () => {
                         title: 'Camera Code',
                     }}
                 />
-                                <Stack.Screen
+                <Stack.Screen
                     name="Loader"
                     component={LoaderScreen}
                     options={{
                         title: 'Caricamento',
+                        headerShown: false,
                     }}
                 />
-                                <Stack.Screen
+                <Stack.Screen
                     name="Result"
                     component={ResultAnalysisScreen}
                     options={{
