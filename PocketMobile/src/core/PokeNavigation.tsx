@@ -4,7 +4,6 @@ import { RightMenu } from 'src/components';
 import {
   CodeAnalysisScreen,
   EducationScreen,
-  LinkAnalysisScreen,
   MenuScreen,
   PhotoAnalysisScreen,
   ProfileScreen,
@@ -17,7 +16,7 @@ import { PocketSplashScreen } from 'src/screens/PocketSplashScreen';
 import { ReadCodeScreen } from 'src/screens/ReadCodeScreen';
 import { RegisterScreen } from 'src/screens/RegisterScreen';
 import { ResultAnalysisScreen } from 'src/screens/ResultAnalysisScreen';
-import { YELLOW } from 'src/utils/pocket-palete';
+import { ORANGE } from 'src/utils';
 
 import {
   NavigationContainer,
@@ -40,7 +39,7 @@ const PocketNavigation = () => {
                 screenOptions={{
                     headerShadowVisible: false,
                     headerTitle: '',
-                    headerStyle: { backgroundColor: YELLOW },
+                    headerStyle: { backgroundColor: ORANGE },
                     headerRight: () => <RightMenu />,
 
                 }}
@@ -105,7 +104,7 @@ const PocketNavigation = () => {
                 />
                 <Stack.Screen
                     name="LinkAnalysis"
-                    component={LinkAnalysisScreen}
+                    component={ResultAnalysisScreen}
                     options={{
                         title: 'Analisi Link',
                     }}
