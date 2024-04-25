@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-import {
-    Text,
-} from 'react-native';
-import GeneralStyle from 'src/utils/GeneralStyle';
+import { Text } from 'react-native';
+import { PokeLayout } from 'src/components';
+import { GeneralStyle } from 'src/utils';
 import tw from 'twrnc';
 
 import { useIsFocused } from '@react-navigation/native';
-import { PokeLayout } from 'src/components';
+
 const positiveResult = 'Il prodotto è un prodotto originale';
 const negativeResult = 'Il prodotto non è un prodotto originale';
 export const ResultAnalysisScreen = (): React.JSX.Element => {

@@ -3,7 +3,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { PokeLayout } from 'src/components';
 import { IMAGEreport } from 'src/images';
-import GeneralStyle from 'src/utils/GeneralStyle';
+import { GeneralStyle } from 'src/utils';
 import tw from 'twrnc';
 
 const ReportScreen = ({ }) => {

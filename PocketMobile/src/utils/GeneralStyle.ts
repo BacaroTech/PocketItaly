@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import tw from 'twrnc';
 
 import {
   BLACK,
@@ -35,15 +36,19 @@ const GeneralStyle = StyleSheet.create({
         fontFamily: FontFamilyName,
     },
     input: {
-        height: 40,
-        marginTop: 20,
-        borderRadius: 15,
-        padding: 5,
-        fontSize: 25,
-        paddingLeft: 20,
         color: PURPLE,
         backgroundColor: WHITE,
         fontFamily: FontFamilyName,
+    },
+    submit: {
+        backgroundColor: YELLOW,
+        color: ORANGE,
+        alignSelf: 'center',
+    },
+    submitRegistration: {
+        backgroundColor: WHITE,
+        color: PURPLE,
+        alignSelf: 'center',
     },
     submitTrasparent: {
         borderColor: WHITE,
@@ -54,37 +59,11 @@ const GeneralStyle = StyleSheet.create({
         borderRadius: 15,
         fontSize: 20,
     },
-    submit: {
-        backgroundColor: YELLOW,
-        color: ORANGE,
-        margin: 10,
-        height: 40,
-        borderRadius: 15,
-        fontSize: 20,
-    },
-    submitRegistration: {
-        backgroundColor: WHITE,
-        color: PURPLE,
-        margin: 10,
-        height: 40,
-        borderRadius: 15,
-        fontSize: 20,
-    },
-    submitOrange: {
-        backgroundColor: ORANGE,
-        color: YELLOW,
-        margin: 10,
-        height: 40,
-        borderRadius: 15,
-        fontSize: 20,
-        fontFamily: FontFamilyName,
-    },
+
     submitYellow: {
         backgroundColor: YELLOW,
     },
-    splashContainer: {
 
-    },
     splashLogo: {
         width: '100%',
         height: undefined,
@@ -96,6 +75,14 @@ const GeneralStyle = StyleSheet.create({
         aspectRatio: 1,
     },
 });
-
-export default GeneralStyle;
-export { GeneralStyle };
+const GeneralInput = [tw`pl-5 rounded-full text-2xl`, GeneralStyle.input];
+const GeneralSubmit = [tw`px-10 py-1 rounded-full`, GeneralStyle.submit];
+const GeneralSumbitText = [tw`text-center text-2xl`, GeneralStyle.black];
+const GeneralRegister = [tw`px-10 py-1 rounded-full`, GeneralStyle.submitRegistration];
+export {
+  GeneralInput,
+  GeneralRegister,
+  GeneralStyle,
+  GeneralSubmit,
+  GeneralSumbitText,
+};

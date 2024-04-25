@@ -7,8 +7,8 @@ import {
 } from 'react-native';
 
 type BlockProperty = {
-    style: StyleProp<any>[],
-    row: string,
+    style?: StyleProp<any>[],
+    row?: boolean,
     flex?: number,
     children: ReactNode
 }

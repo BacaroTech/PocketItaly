@@ -4,12 +4,12 @@ import {
   Text,
   View,
 } from 'react-native';
-import GeneralStyle from 'src/utils/GeneralStyle';
 import {
   BLACK,
+  GeneralStyle,
   ORANGE,
   PURPLE,
-} from 'src/utils/pocket-palete';
+} from 'src/utils';
 
 const FlexDimensionsBasics = () => {
   return (

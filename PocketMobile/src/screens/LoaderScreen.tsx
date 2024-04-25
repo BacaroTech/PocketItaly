@@ -2,14 +2,12 @@
 import React, { useEffect } from 'react';
 
 import {
-    Image,
-    Text,
-    View,
+  Text,
+  View,
 } from 'react-native';
 import { IRouteNameList } from 'src/core/navigation.interface';
 import { usePocketNavigation } from 'src/core/PokeNavigation';
-import { IMAGElogo } from 'src/images';
-import GeneralStyle from 'src/utils/GeneralStyle';
+import { GeneralStyle } from 'src/utils';
 import tw from 'twrnc';
 
 import { useIsFocused } from '@react-navigation/native';

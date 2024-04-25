@@ -10,12 +10,16 @@ import {
 } from 'react-native';
 import { PokeLayout } from 'src/components';
 import { usePocketNavigation } from 'src/core';
-import GeneralStyle, { FontFamilyName } from 'src/utils/GeneralStyle';
 import {
+  FontFamilyName,
+  GeneralInput,
+  GeneralRegister,
+  GeneralSubmit,
+  GeneralSumbitText,
   ORANGE,
   PURPLE,
   WHITE,
-} from 'src/utils/pocket-palete';
+} from 'src/utils';
 import tw from 'twrnc';
 
 const LoginStyle = StyleSheet.create({
@@ -52,9 +56,9 @@ const LoginScreen = ({ }) => {
     };
     return (
         <PokeLayout>
-            <SafeAreaView style={[tw` mx-10 my-10 mb-20 flex flex-col gap-2`]}>
+            <SafeAreaView style={[tw` mx-10 my-10 mb-20 flex flex-col gap-5`]}>
                 <TextInput
-                    style={[GeneralStyle.input]}
+                    style={[GeneralInput]}
                     placeholder="Email"
                     keyboardType="email-address"
                     placeholderTextColor={PURPLE}
@@ -62,7 +66,7 @@ const LoginScreen = ({ }) => {
                     defaultValue={email}
                 />
                 <TextInput
-                    style={[GeneralStyle.input]}
+                    style={[GeneralInput]}
                     placeholder="Password"
                     placeholderTextColor={PURPLE}
                     onChangeText={valueUpdated => setPassword(valueUpdated)}
@@ -71,20 +75,22 @@ const LoginScreen = ({ }) => {
                 />
 
 
-                <View style={[tw`mt-5`, GeneralStyle.submit]} >
+                <View style={[GeneralSubmit]} >
                     <Pressable onPress={() => login()}>
-                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Login</Text>
+                        <Text style={[GeneralSumbitText]}>Login</Text>
                     </Pressable>
                 </View>
 
-                <Text style={[LoginStyle.account]}>
-                    Non hai ancora  un account? {'\n'} Registrati subito!
-                </Text>
+                <View style={[tw`mt-10`]}>
+                    <Text style={[LoginStyle.account]}>
+                        Non hai ancora  un account? {'\n'} Registrati subito!
+                    </Text>
 
-                <View style={[tw`m-1`, GeneralStyle.submitRegistration]} >
-                    <Pressable onPress={() => goToRegistration()}>
-                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Registrati</Text>
-                    </Pressable>
+                    <View style={[GeneralRegister]} >
+                        <Pressable onPress={() => goToRegistration()}>
+                            <Text style={[GeneralSumbitText]}>Registrati</Text>
+                        </Pressable>
+                    </View>
                 </View>
             </SafeAreaView>
         </PokeLayout>

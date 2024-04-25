@@ -1,39 +1,37 @@
 import React, {
-    useCallback,
-    useRef,
-    useState,
+  useCallback,
+  useRef,
+  useState,
 } from 'react';
 
 import {
-    StyleSheet,
-    Text,
-    View,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
 import { PressableOpacity } from 'react-native-pressable-opacity';
 import { createIconSet } from 'react-native-vector-icons';
 import {
-    Camera,
-    Code,
-    useCameraDevice,
-    useCameraPermission,
-    useCodeScanner,
+  Camera,
+  Code,
+  useCameraDevice,
+  useCameraPermission,
+  useCodeScanner,
 } from 'react-native-vision-camera';
-import {
-    PokeLayout,
-} from 'src/components';
+import { PokeLayout } from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { useIsForeground } from 'src/hooks';
 import { glyphMap } from 'src/icons';
 import { IMAGEcode } from 'src/images';
 import {
-    BLACK,
-    CAPTURE_BUTTON_SIZE,
-    CONTENT_SPACING,
-    CONTROL_BUTTON_SIZE,
-    SAFE_AREA_PADDING,
-    YELLOW,
+  BLACK,
+  CAPTURE_BUTTON_SIZE,
+  CONTENT_SPACING,
+  CONTROL_BUTTON_SIZE,
+  GeneralStyle,
+  SAFE_AREA_PADDING,
+  YELLOW,
 } from 'src/utils';
-import { GeneralStyle } from 'src/utils/GeneralStyle';
 import tw from 'twrnc';
 
 import { useIsFocused } from '@react-navigation/native';

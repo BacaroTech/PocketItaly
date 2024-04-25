@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
 import {
   Pressable,
@@ -10,50 +13,55 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { PokeLayout } from 'src/components';
 import { usePocketNavigation } from 'src/core';
 import { IMAGEcode } from 'src/images';
-import { PURPLE } from 'src/utils';
-import GeneralStyle from 'src/utils/GeneralStyle';
+import {
+  GeneralInput,
+  GeneralStyle,
+  GeneralSubmit,
+  GeneralSumbitText,
+  PURPLE,
+} from 'src/utils';
 import tw from 'twrnc';
 
 const CodeAnalysisScreen = (prop: any) => {
     const {
         codeRead = '',
     } = prop?.route?.params || {};
-    console.log("CodeAnalysisScreen",codeRead)
+
     const navigation = usePocketNavigation();
     const [code, setCode] = useState('');
     const readCode = () => {
         navigation.navigate('CameraCode');
-    }
+    };
     const sendCode = () => {
         navigation.navigate('Loader');
-    }
+    };
     useEffect(()=> {
-        console.log("update code", codeRead)
-        setCode(codeRead)
-    },[codeRead])
+        console.log('update code', codeRead);
+        setCode(codeRead);
+    },[codeRead]);
     return (
         <PokeLayout logo={IMAGEcode}>
             <SafeAreaView style={[tw` mx-10 my-10 mb-20 flex flex-col gap-1`]}>
                 <Text style={[tw`text-2xl`, GeneralStyle.white]}>Analisi Codice</Text>
-                <Text style={[tw`text-xl`, GeneralStyle.white]}>Inserisci il codice che vuoi analizzare</Text>
-                <View style={[tw`mt-5`, GeneralStyle.submit]} >
+                <Text style={[tw`text-xl`, GeneralStyle.white]}>Per utilizzare l'analisi tramite codice accedere alla telecamera</Text>
+                <View style={[tw`mt-4`,GeneralSubmit]}>
                     <Pressable onPress={() => readCode()}>
-                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Cattura dalla fotocamera</Text>
+                        <Text style={[GeneralSumbitText]}>Apri</Text>
                     </Pressable>
                 </View>
-                <TextInput
-                    style={[GeneralStyle.input]}
+                {code ? <><TextInput
+                    style={[tw`mt-4`, GeneralInput]}
                     placeholder="Codice"
                     placeholderTextColor={PURPLE}
                     onChangeText={valueUpdated => setCode(valueUpdated)}
                     defaultValue={code}
                     value={code}
                 />
-                <View style={[tw`mt-5`, GeneralStyle.submit]} >
-                    <Pressable onPress={() => sendCode()}>
-                        <Text style={[tw`text-center mt-1 text-xl`, GeneralStyle.black]}>Analizza</Text>
-                    </Pressable>
-                </View>
+                    <View style={[tw`mt-4`, GeneralSubmit]} >
+                        <Pressable onPress={() => sendCode()}>
+                            <Text style={[GeneralSumbitText]}>Analizza</Text>
+                        </Pressable>
+                    </View></> : <></>}
             </SafeAreaView>
         </PokeLayout>
     );

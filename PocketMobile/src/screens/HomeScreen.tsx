@@ -25,7 +25,7 @@ import {
   BLACK,
   WHITE,
   YELLOW,
-} from 'src/utils/pocket-palete';
+} from 'src/utils';
 import tw from 'twrnc';
 
 const HomeStyle = StyleSheet.create(
@@ -33,7 +33,7 @@ const HomeStyle = StyleSheet.create(
         navButton: {
             borderRadius: 100,
             backgroundColor: YELLOW,
-            padding: 0
+            padding: 0,
         },
         iconButton: {
             flex: 1,
@@ -42,7 +42,7 @@ const HomeStyle = StyleSheet.create(
             aspectRatio: 1,
         },
         containerButton: {
-            padding: 20,
+            padding: 10,
         },
         title: {
             color: WHITE,
@@ -50,7 +50,7 @@ const HomeStyle = StyleSheet.create(
         textBtn: {
             fontSize: 20,
             color: BLACK,
-        }
+        },
     },
 );
 const HomeScreen = ({ }) => {
