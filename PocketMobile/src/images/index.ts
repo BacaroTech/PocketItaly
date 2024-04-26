@@ -7,5 +7,7 @@ export const IMAGElink = require('../../assets/pocket-link.png');
 export const IMAGEprofile = require('../../assets/pocket-profile.png');
 export const IMAGEreport = require('../../assets/pocket-report.png');
 export const IMAGELoader = require('../../assets/loader.png');
+export const IMAGENfc = require('../../assets/nfc-icon.png');
+export const IMAGEsuccess = require('../../assets/success-icon.png');
 // mock
 export const IMAGEShop1 = require('../../assets/shop1.png');

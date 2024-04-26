@@ -28,6 +28,8 @@ import {
   ProfileScreenNavigationProp,
   RootStackParamList,
 } from './navigation.interface';
+import { ExchangeScreen } from 'src/screens/ExchangeNFCScreen';
+import { ExchangeSuccessScreen } from 'src/screens/ExchangeSuccessScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -143,6 +145,20 @@ const PocketNavigation = () => {
                     component={ResultAnalysisScreen}
                     options={{
                         title: 'Risultato',
+                    }}
+                />
+                <Stack.Screen
+                    name="ExchangeScreen"
+                    component={ExchangeScreen}
+                    options={{
+                        title: 'Scambio nfc',
+                    }}
+                />
+                <Stack.Screen
+                    name="ExchangeSuccessScreen"
+                    component={ExchangeSuccessScreen}
+                    options={{
+                        title: 'Scambio avvenuto',
                     }}
                 />
             </Stack.Navigator>

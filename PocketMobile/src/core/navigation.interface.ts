@@ -18,6 +18,8 @@ export type RootStackParamList = {
     CameraCode: { name: string } | undefined;
     Result:  { name: string } | undefined;
     Loader: { name: string } | undefined;
+    ExchangeScreen: { name: string} | undefined;
+    ExchangeSuccessScreen: { name: string } | undefined;
 };
 
 export type RouteNameList = {
@@ -34,7 +36,9 @@ export type RouteNameList = {
     'Menu': undefined,
     'CameraCode': undefined,
     'Result': undefined,
-    'Loader': undefined
+    'Loader': undefined,
+    'ExchangeScreen': undefined,
+    'ExchangeSuccessScreen': undefined
 
 }
 export type RootStackParamNameList = keyof RootStackParamList;
