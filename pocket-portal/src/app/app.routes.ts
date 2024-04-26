@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './screens/home/home.component';
 
-export const routes: Routes = [
+export const routesPrivate: Routes = [
   {
     path: '',
     pathMatch: 'full',
@@ -26,3 +26,22 @@ export const routes: Routes = [
       ),
   },
 ];
+
+export const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./screens/login/login.component').then(
+        (mod) => mod.LoginComponent,
+      ),
+  },
+  // {
+  //   path: 'home',
+
+  // }
+]
