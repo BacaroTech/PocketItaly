@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './screens/home/home.component';
 import { ZeccaHomeComponent } from './screens/zecca-home/zecca-home.component';
 import { FactoryHomeComponent } from './screens/factory-home/factory-home.component';
 
