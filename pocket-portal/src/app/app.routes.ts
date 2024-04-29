@@ -31,13 +31,27 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    redirectTo: 'home-login',
+  },
+  {
+    path: 'home-login',
+    loadComponent: () =>
+      import('./screens/home-login/home-login.component').then(
+        (mod) => mod.HomeLoginComponent,
+      ),
   },
   {
     path: 'login',
     loadComponent: () =>
       import('./screens/login/login.component').then(
         (mod) => mod.LoginComponent,
+      ),
+  },
+  {
+    path: 'register',
+    loadComponent: () =>
+      import('./screens/register/register.component').then(
+        (mod) => mod.RegisterComponent,
       ),
   },
   // {

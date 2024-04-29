@@ -1,0 +1,31 @@
+<div class="h-screen flex min-h-full">
+
+  <div class="relative hidden flex-1 lg:block w-1/2 bg-pocket_orange">
+    <img class="p-24 absolute inset-0 h-full w-full object-contain" src="/assets/img/splash.png" alt="">
+  </div>
+  <div class="flex flex-1 w-1/2 flex-col justify-center bg-pocket_purple px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+    <div class="mx-auto w-full">
+      <div class="flex flex-col items-center">
+        <h1 class="text-[90px] font-bold uppercase text-white text-center lg:text-left">pocket italy</h1>
+        <h2 class="text-[48px] leading-10 text-white text-center lg:text-left">Il tuo portale contro la contraffazione del made in italy</h2>
+        <div class="mt-10 w-full flex justify-center">
+          <button type="submit"
+          class="flex justify-center rounded-full bg-pocket_yellow px-20 py-5 text-[32px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600"
+          (click)="goToLogin()"
+          >
+          Login
+        </button>
+        </div>
+        <div class="mt-10 px-20 flex justify-center w-full">
+
+          <a
+          [routerLink]="['/register']"
+           class="text-white text-[32px] font-light text-center hover:underline hover:cursor-pointer"
+
+          >Non hai ancora un account rivenditore e/o compratore? registrati da qui!</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
