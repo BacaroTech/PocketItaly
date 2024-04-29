@@ -27,7 +27,7 @@ export const sidebarTheme: SidebarBaseTheme = {
     base: 'h-full',
   },
   content: {
-    base: 'flex h-full flex-col space-y-4 divide-y divide-gray-200 overflow-y-auto bg-white py-4 px-3 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800',
+    base: 'flex h-full flex-col space-y-4 divide-y divide-gray-200 overflow-y-auto bg-pocket_orange py-4 px-3 dark:divide-gray-700 dark:border-gray-700 dark:bg-gray-800',
     rounded: {
       enabled: 'rounded',
       disabled: '',

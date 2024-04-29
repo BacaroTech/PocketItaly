@@ -1,0 +1,15 @@
+<flowbite-sidebar>
+  <flowbite-sidebar-item-group>
+    <div class="flex justify-center items-center">
+      <img class="w-40 mb-4 text-gray-500 dark:text-gray-400" src="/assets/img/splash.png" alt="">
+    </div>
+  </flowbite-sidebar-item-group>
+  <flowbite-sidebar-item-group>
+    <flowbite-sidebar-item
+      *ngFor="let component of menuList"
+
+      [link]="component.href"
+      >{{ component.title }}</flowbite-sidebar-item
+    >
+  </flowbite-sidebar-item-group>
+</flowbite-sidebar>

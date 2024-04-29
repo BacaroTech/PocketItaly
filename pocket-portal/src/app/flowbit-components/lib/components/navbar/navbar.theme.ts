@@ -65,7 +65,7 @@ export function getClasses(properties: NavbarProperties): NavbarClass {
     navbarTheme,
     properties.customStyle,
   );
-
+  console.log(properties.customStyle)
   const output: NavbarClass = {
     navbarClass: twMerge(
       theme.root.base,

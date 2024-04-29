@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './screens/home/home.component';
+import { ZeccaHomeComponent } from './screens/zecca-home/zecca-home.component';
+import { ProductHomeComponent } from './screens/product-home/product-home.component';
 
 export const routesPrivate: Routes = [
   {
@@ -54,8 +56,31 @@ export const routes: Routes = [
         (mod) => mod.RegisterComponent,
       ),
   },
-  // {
-  //   path: 'home',
+  {
+    path: 'zecca',
+    component: ZeccaHomeComponent,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./screens/home/home.component').then(
+            (mod) => mod.HomeComponent,
+          )
+      }
+    ]
+  },
+  {
+    path: 'factory',
+    component: ProductHomeComponent,
+    children: [
+      {
+        path: 'home',
+        loadComponent: () =>
+          import('./screens/product-stores/product-stores.component').then(
+            (mod) => mod.ProductStoresComponent,
+          )
+      }
+    ]
+  }
 
-  // }
 ]
