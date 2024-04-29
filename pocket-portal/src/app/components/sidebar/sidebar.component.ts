@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { PMenuItem } from '../../interfaces/menu.interface';
 import { RouterLink } from '@angular/router';
 import { SidebarComponent, SidebarItemComponent, SidebarItemGroupComponent } from '../../flowbit-components';
-import { RouteProps, menuList } from '../../interfaces/menuList';
+import { RouteProps, zeccaList } from '../../interfaces/menuList';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,5 +15,5 @@ import { RouteProps, menuList } from '../../interfaces/menuList';
 export class PortalSidebarComponent {
 
 
-  menuList: RouteProps[] = [...menuList]
+  menuList: RouteProps[] = [...zeccaList]
 }

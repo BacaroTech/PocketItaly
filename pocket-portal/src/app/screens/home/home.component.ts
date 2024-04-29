@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { menuList } from '../../interfaces/menuList';
+import { zeccaList } from '../../interfaces/menuList';
 import { NgClass, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -11,6 +11,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  components = menuList.filter((component) => !!component.card);
+  components = zeccaList.filter((component) => !!component.card);
 
 }

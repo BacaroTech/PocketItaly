@@ -1,40 +1,9 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './screens/home/home.component';
 import { ZeccaHomeComponent } from './screens/zecca-home/zecca-home.component';
-import { ProductHomeComponent } from './screens/product-home/product-home.component';
-
-export const routesPrivate: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'map',
-    loadComponent: () =>
-      import('./screens/map/map.component').then(
-        (mod) => mod.MapComponent,
-      ),
-  },
-  {
-    path: 'report',
-    loadComponent: () =>
-      import('./screens/report/report.component').then(
-        (mod) => mod.ReportComponent,
-      ),
-  },
-];
+import { FactoryHomeComponent } from './screens/factory-home/factory-home.component';
 
 export const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'home-login',
-  },
   {
     path: 'home-login',
     loadComponent: () =>
@@ -63,24 +32,107 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () =>
-          import('./screens/home/home.component').then(
-            (mod) => mod.HomeComponent,
+          import('./screens/zecca-dashboard/zecca-dashboard.component').then(
+            (mod) => mod.ZeccaDashboardComponent,
           )
-      }
+      },
+      {
+        path: 'map',
+        loadComponent: () =>
+          import('./screens/zecca-map/zecca-map.component').then(
+            (mod) => mod.ZeccaMapComponent,
+          )
+      },
+      {
+        path: 'web-site',
+        loadComponent: () =>
+          import('./screens/zecca-web-sites/zecca-web-sites.component').then(
+            (mod) => mod.ZeccaWebSitesComponent,
+          )
+      },
+      {
+        path: 'report',
+        loadComponent: () =>
+          import('./screens/zecca-report/zecca-report.component').then(
+            (mod) => mod.ZeccaReportComponent,
+          )
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+      },
+      {
+        path: '**',
+        redirectTo: '/home',
+      },
     ]
   },
   {
     path: 'factory',
-    component: ProductHomeComponent,
+    component: FactoryHomeComponent,
     children: [
       {
         path: 'home',
         loadComponent: () =>
-          import('./screens/product-stores/product-stores.component').then(
-            (mod) => mod.ProductStoresComponent,
+          import('./screens/factory-dashboard/factory-dashboard.component').then(
+            (mod) => mod.FactoryDashboardComponent,
           )
-      }
+      },
+      {
+        path: 'store',
+        loadComponent: () =>
+          import('./screens/factory-stores/factory-stores.component').then(
+            (mod) => mod.FactoryStoresComponent,
+          )
+      },
+      {
+        path: 'warehouse',
+        loadComponent: () =>
+          import('./screens/factory-warehouse/factory-warehouse.component').then(
+            (mod) => mod.FactoryWarehouseComponent,
+          )
+      },
+      {
+        path: 'create-product',
+        loadComponent: () =>
+          import('./screens/factory-create-product/factory-create-product.component').then(
+            (mod) => mod.FactoryCreateProductComponent,
+          )
+      },
+      {
+        path: 'create-token',
+        loadComponent: () =>
+          import('./screens/factory-create-token/factory-create-token.component').then(
+            (mod) => mod.FactoryCreateTokenComponent,
+          )
+      },
+      {
+        path: 'profile',
+        loadComponent: () =>
+          import('./screens/factory-profile/factory-profile.component').then(
+            (mod) => mod.FactoryProfileComponent,
+          )
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'home',
+      },
+      {
+        path: '**',
+        redirectTo: '/home',
+      },
     ]
-  }
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'home-login',
+  },
+  {
+    path: '**',
+    redirectTo: '/home-login',
+  },
 
 ]

@@ -3,12 +3,12 @@ import { FactorySidebarComponent } from '../../components/factory-sidebar/factor
 import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-product-home',
+  selector: 'app-factory-home',
   standalone: true,
   imports: [FactorySidebarComponent, RouterOutlet],
-  templateUrl: './product-home.component.html',
-  styleUrl: './product-home.component.css'
+  templateUrl: './factory-home.component.html',
+  styleUrl: './factory-home.component.css'
 })
-export class ProductHomeComponent {
+export class FactoryHomeComponent {
 
 }
