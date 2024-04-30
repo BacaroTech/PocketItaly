@@ -1,5 +1,11 @@
 # PocketItaly
 
+## Sorgenti Backend
+https://github.com/BacaroTech/PocketItaly-Server
+
+## Demo Portale
+https://pocket-italy.github.io/home-login
+
 ## Mobile
 ```
 cd PocketMobile
