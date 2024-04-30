@@ -100,6 +100,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'create-store',
+        loadComponent: () =>
+          import('./screens/factory-create-store/factory-create-store.component').then(
+            (mod) => mod.FactoryCreateStoreComponent,
+          )
+      },
+      {
         path: 'create-token',
         loadComponent: () =>
           import('./screens/factory-create-token/factory-create-token.component').then(
@@ -111,6 +118,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./screens/factory-profile/factory-profile.component').then(
             (mod) => mod.FactoryProfileComponent,
+          )
+      },
+      {
+        path: 'check-serial',
+        loadComponent: () =>
+          import('./screens/factory-check-serial/factory-check-serial.component').then(
+            (mod) => mod.FactoryCheckSerialComponent,
           )
       },
       {

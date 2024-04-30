@@ -1,5 +1,10 @@
 # PocketPortal
 
+## Deploy
+ng deploy --base-href=https://pocket-italy.github.io/pocket-italy.github.io/
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
 
 ## Development server
