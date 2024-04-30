@@ -1,1 +1,163 @@
-<p>factory-create-store works!</p>
+<app-factory-page-layout title="Nuovo Negozio"
+                         [subTitle]="subTitle">
+
+  <form
+    *ngIf="!createSuccess;else createSuccessTemplate"
+    class="flex flex-col gap-3"
+        [formGroup]="form"
+        (submit)="addStore()">
+    <div [ngSwitch]="step" class="w-full">
+      <div *ngSwitchCase="1"
+           class="flex flex-col lg:flex-row gap-2">
+        <div class="flex flex-col gap-2">
+          <div class="px-10">
+            <input type="text"
+                   name="company-name"
+                   id="company-name"
+                   formControlName="company-name"
+                   class="block w-full rounded-full border-0
+                 bg-pocket_yellow
+                 px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
+                   placeholder="Ragione Sociale">
+          </div>
+          <div class="px-10">
+            <input type="text"
+                   name="vat"
+                   id="vat"
+                   formControlName="vat"
+                   class="block w-full rounded-full border-0
+                 bg-pocket_yellow
+                 px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
+                   placeholder="Partita IVA">
+          </div>
+          <div class="px-10">
+            <input type="text"
+                   name="address"
+                   id="address"
+                   formControlName="address"
+                   class="block w-full rounded-full border-0
+                 bg-pocket_yellow
+                 px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
+                   placeholder="Indirizzo">
+          </div>
+          <div class="px-10">
+            <input type="text"
+                   name="province"
+                   id="province"
+                   formControlName="province"
+                   class="block w-full rounded-full border-0
+                 bg-pocket_yellow
+                 px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
+                   placeholder="Provincia">
+          </div>
+          <div class="px-10">
+            <input type="text"
+                   name="cap"
+                   id="cap"
+                   formControlName="cap"
+                   class="block w-full rounded-full border-0
+                 bg-pocket_yellow
+                 px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
+                   placeholder="CAP">
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-10 mt-20 lg:mt-0">
+          <div class="flex items-center justify-center w-full">
+            <label for="dropzone-file"
+                   class="flex flex-col items-center justify-center w-full h-40 md:w-80 border-2 border-gray-300 border-line rounded-lg cursor-pointer bg-gray-300 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-semibold">Foto del negozio
+                  </span>
+                </p>
+                <img class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                     src="/assets/img/folder-icon.png"
+                     alt="">
+
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-semibold">Clicca per
+                    caricare
+                  </span> o trascina sopra
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">PNG, JPEG</p>
+              </div>
+              <input id="dropzone-file"
+                     type="file"
+                     (change)="onPhotoPicked($event)"
+                     class="hidden" />
+            </label>
+          </div>
+          <div *ngIf="imageSrc" class="p-2 flex justify-center overflow-hidden rounded-xl bg-gray-200">
+            <img class="w-72 object-cover"
+            [src]="imageSrc "
+            alt="">
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="2"
+           class="w-full flex flex-col lg:flex-row gap-2">
+        <div class="w-1/2 flex flex-col items-center gap-2">
+          <h4>Caricati</h4>
+          <div *ngFor="let itemsArray of form.controls.docs.controls; let i = index">
+              {{getValue(itemsArray)}}
+          </div>
+        </div>
+        <div class="w-1/2 flex mt-20 lg:mt-0">
+          <div class="flex items-center justify-center w-full">
+            <label for="dropzone-file"
+                   class="flex flex-col items-center justify-center w-full h-40 md:w-80 border-2 border-gray-300 border-line rounded-lg cursor-pointer bg-gray-300 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+              <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-semibold">Carica documenti
+                  </span>
+                </p>
+                <img class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+                     src="/assets/img/folder-icon.png"
+                     alt="">
+
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="font-semibold">Clicca per
+                    caricare
+                  </span> o trascina sopra
+                </p>
+                <p class="text-xs text-gray-500 dark:text-gray-400">PDF</p>
+              </div>
+              <input id="dropzone-file"
+                     type="file"
+                     (change)="onDocsPicked($event)"
+                     [multiple]="true"
+                     class="hidden" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 w-full flex justify-center">
+      <button type="button"
+              *ngIf="step == 1"
+              (click)="goNext()"
+              class="flex justify-center rounded-full bg-pocket_yellow px-20 py-5 text-[32px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600">
+        Avanti
+      </button>
+      <button type="submit"
+              *ngIf="step == 2"
+              (click)="addStore()"
+              class="flex justify-center rounded-full bg-pocket_yellow px-20 py-5 text-[32px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600">
+        Registra
+      </button>
+    </div>
+  </form>
+  <ng-template #createSuccessTemplate>
+    <div class="py-32 px-28 flex flex-col items-center gap-10">
+      <h1 class="text-[48px] font-bold text-center text-black">Grazie di aver completato la procedura di
+        registrazione
+      </h1>
+      <h1 class="text-[36px] font-semibold text-center text-black">Dopo una verifica svolta dei nostri operatori
+        ti
+        invieremo una mail
+        di conferma </h1>
+    </div>
+  </ng-template>
+</app-factory-page-layout>
