@@ -1,5 +1,8 @@
 # PocketItaly
 
+## Descrizione Progetto
+Giorgio
+
 ## Sorgenti Backend
 https://github.com/BacaroTech/PocketItaly-Server
 
