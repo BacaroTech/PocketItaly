@@ -1,0 +1,1 @@
+import{P as e}from"./chunk-7PJ4KRCL.js";var n=(()=>{let t=class t{constructor(){}storeUser(r){localStorage.setItem("u",r)}logoutUser(){localStorage.removeItem("u")}};t.\u0275fac=function(a){return new(a||t)},t.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"});let o=t;return o})();export{n as a};

@@ -1,0 +1,1 @@
+import{Y as n,Ya as r,Za as a,hb as i,lb as s}from"./chunk-7PJ4KRCL.js";var m=(()=>{let e=class e{};e.\u0275fac=function(o){return new(o||e)},e.\u0275cmp=n({type:e,selectors:[["app-factory-stores"]],standalone:!0,features:[s],decls:2,vars:0,template:function(o,p){o&1&&(r(0,"p"),i(1,"factory-stores works!"),a())}});let t=e;return t})();export{m as FactoryStoresComponent};

@@ -1,0 +1,1 @@
+import{Y as n,Ya as r,Za as i,hb as a,lb as p}from"./chunk-7PJ4KRCL.js";var l=(()=>{let e=class e{};e.\u0275fac=function(o){return new(o||e)},e.\u0275cmp=n({type:e,selectors:[["app-factory-profile"]],standalone:!0,features:[p],decls:2,vars:0,template:function(o,s){o&1&&(r(0,"p"),a(1,"factory-profile works!"),i())}});let t=e;return t})();export{l as FactoryProfileComponent};
