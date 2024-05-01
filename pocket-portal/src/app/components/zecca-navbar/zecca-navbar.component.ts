@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
-import { NavbarComponent } from '../../flowbit-components';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
+
+import { NavbarComponent } from '../../flowbit-components';
+import {
+  NavbarBaseTheme,
+} from '../../flowbit-components/lib/components/navbar/navbar.theme';
 import { zeccaList } from '../../interfaces/menuList';
-import { NavbarBaseTheme } from '../../flowbit-components/lib/components/navbar/navbar.theme';
-import { RouterLink } from '@angular/router';
+import { UserSessionService } from '../../services/user-session.service';
 
 @Component({
   selector: 'app-zecca-navbar',
@@ -22,5 +29,11 @@ export class ZeccaNavbarComponent {
     },
     content: {}
   };
+  constructor(private userSession: UserSessionService, private router: Router) {}
+
+  logout() {
+    this.userSession.logoutUser();
+    this.router.navigateByUrl('login-home');
+  }
 
 }

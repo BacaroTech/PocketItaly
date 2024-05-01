@@ -1,14 +1,5 @@
 <div class="mx-auto max-w-screen-xl p-4 lg:p-12 lg:text-center">
-  <div>
-    <div class="mt-10 w-full flex justify-center">
-      <button type="button"
-        (click)="logout()"
 
-        class="flex justify-center rounded-full bg-pocket_yellow px-20 py-5 text-[32px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600">
-        Logout
-      </button>
-    </div>
-  </div>
   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <a
       *ngFor="let component of components"
@@ -39,17 +30,10 @@
           ></path>
         </svg>
       </div>
-      <div class="flex h-52 items-center justify-center">
+      <div class="flex h-52 py-2 items-center justify-center">
         <img
-          class="dark:hidden"
-          [ngClass]="component.card!.className"
-          [src]="'./assets/images/' + component.card!.images.light"
-          [alt]="component.title"
-        />
-        <img
-          class="hidden dark:block"
-          [ngClass]="component.card!.className"
-          [src]="'./assets/images/' + component.card!.images.dark"
+          [ngClass]="'h-full'"
+          [src]="component.card!.images.light"
           [alt]="component.title"
         />
       </div>

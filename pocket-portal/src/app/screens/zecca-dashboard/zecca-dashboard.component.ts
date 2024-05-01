@@ -1,9 +1,11 @@
-import { NgClass, NgFor } from '@angular/common';
+import {
+  NgClass,
+  NgFor,
+} from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { zeccaList } from '../../interfaces/menuList';
-import { UserSessionService } from '../../services/user-session.service';
+import { RouterLink } from '@angular/router';
 
+import { zeccaList } from '../../interfaces/menuList';
 
 @Component({
   selector: 'app-zecca-dashboard',
@@ -13,12 +15,6 @@ import { UserSessionService } from '../../services/user-session.service';
   styleUrl: './zecca-dashboard.component.css'
 })
 export class ZeccaDashboardComponent {
-  components = zeccaList.filter((component) => !!component.card);
-  constructor(private userSession: UserSessionService, private router: Router) {}
-
-  logout() {
-    this.userSession.logoutUser();
-    this.router.navigateByUrl('login-home');
-  }
+  components = zeccaList;
 
 }

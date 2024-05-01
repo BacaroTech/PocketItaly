@@ -1,6 +1,6 @@
 export type ComponentCardItem = {
-  className: string;
-  images: { light: string; dark: string };
+  className?: string;
+  images: { light: string; dark?: string };
 };
 export type RouteProps = {
   title: string;
@@ -15,6 +15,9 @@ export const zeccaList: RouteProps[] = [
     href: '/zecca/map',
     group: false,
     icon: `<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>`,
+    card: {
+      images: { light: './assets/images/italy-map.svg'},
+    },
   },
   {
     title: 'Web Site',
@@ -22,8 +25,7 @@ export const zeccaList: RouteProps[] = [
     href: '/zecca/web-site',
     group: false,
     card: {
-      className: 'w-56',
-      images: { light: 'accordion-light.svg', dark: 'accordion-dark.svg' },
+      images: { light: './assets/images/web-tables.svg' },
     },
   },
   {
@@ -32,8 +34,7 @@ export const zeccaList: RouteProps[] = [
     href: '/zecca/report',
     group: false,
     card: {
-      className: 'w-56',
-      images: { light: 'alerts-light.svg', dark: 'alerts-dark.svg' },
+      images: { light: './assets/images/tables-light.svg' },
     },
   }
 ];
