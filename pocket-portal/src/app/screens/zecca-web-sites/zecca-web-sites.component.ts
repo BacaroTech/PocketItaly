@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { PocketHeaderTable, PocketTableComponent } from '../../components/pocket-table/pocket-table.component';
+
+import {
+  PocketHeaderTable,
+  PocketTableComponent,
+} from '../../components/pocket-table/pocket-table.component';
+import { ZeccaService } from '../../services/zecca.service';
 
 @Component({
   selector: 'app-zecca-web-sites',
@@ -11,19 +16,19 @@ import { PocketHeaderTable, PocketTableComponent } from '../../components/pocket
 export class ZeccaWebSitesComponent {
   headerList: PocketHeaderTable[] = [
     {
-      id: 'id',
+      id: 'reportNumber',
       label: 'ID'
     },
     {
-      id: 'dominio',
+      id: 'domain',
       label: 'Dominio'
     },
     {
-      id: 'url_product',
+      id: 'urlProduct',
       label: 'URL Prodotto'
     },
     {
-      id: 'grade',
+      id: 'levelFake',
       label: 'Grado'
     },
     {
@@ -31,10 +36,17 @@ export class ZeccaWebSitesComponent {
       label: 'Data'
     }
   ];
-  dataTable: any[] = [
-    { id: '4545', dominio: 'Amazon', url_product: 'www.amazon.it/prodott/2121', grado: 92, date: '25/02/2024' },
-    { id: '45ER', dominio: 'Ebay', url_product: 'www.amazon.it/prodott/2121', grado: 92, date: '25/02/2024' },
-    { id: '5112', dominio: 'Vinted', url_product: 'www.amazon.it/prodott/2121', grado: 92, date: '25/02/2024' },
-    { id: '1125', dominio: 'Subitp', url_product: 'www.amazon.it/prodott/2121', grado: 92, date: '25/02/2024' },
-  ];
+  dataTable: any[] = [];
+
+  constructor(private service: ZeccaService) {}
+  
+  ngAfterViewInit() {
+    this.service.getWebReports().subscribe((r) => {
+      this.dataTable = r.map(report => ({
+        ...report,
+        date: new Date(report.date).toDateString(),
+      }));
+    })
+
+  }
 }

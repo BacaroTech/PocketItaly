@@ -36,8 +36,9 @@ JG.repeat(1000, 1000, {
         return null;
     },
     tradeType() {
-        if (this.reportType === "manual") return null;
-        return JG.random("online", "physic");
+        if (this.reportType === "manual")
+            return JG.random("online", "physic");
+        return null;
     },
     user() {
         if (this.reportType === "manual") {

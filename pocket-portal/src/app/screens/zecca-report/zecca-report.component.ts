@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { PocketHeaderTable, PocketTableComponent } from '../../components/pocket-table/pocket-table.component';
+
+import {
+  PocketHeaderTable,
+  PocketTableComponent,
+} from '../../components/pocket-table/pocket-table.component';
+import { ZeccaService } from '../../services/zecca.service';
+import { ManualPocketReportTable } from './zecca-report.interface';
 
 @Component({
   selector: 'app-zecca-report',
@@ -9,13 +15,13 @@ import { PocketHeaderTable, PocketTableComponent } from '../../components/pocket
   styleUrl: './zecca-report.component.css'
 })
 export class ZeccaReportComponent {
-  headerList: PocketHeaderTable[] = [
+  public headerList: PocketHeaderTable[] = [
     {
-      id: 'id',
+      id: 'reportNumber',
       label: 'ID'
     },
     {
-      id: 'utente',
+      id: 'user',
       label: 'Utente'
     },
     {
@@ -23,18 +29,33 @@ export class ZeccaReportComponent {
       label: 'Email'
     },
     {
-      id: 'tipologia',
+      id: 'tradeType',
       label: 'Tipologia'
+    },
+    {
+      id: 'levelFake',
+      label: 'Grado'
     },
     {
       id: 'date',
       label: 'Data'
     }
   ];
-  dataTable: any[] = [
-    { id: '8975', dominio: 'Gianni', email: 'gianni@email.com', tipologia: 'Fisico', date: '25/02/2024' },
-    { id: '6931', dominio: 'Luca', email: 'luca@email.com', tipologia: 'Online', date: '25/02/2024' },
-    { id: '7489', dominio: 'Giacomo', email: 'giacomo@email.com', tipologia: 'Fisico', date: '25/02/2024' },
-    { id: '3265', dominio: 'Andrea', email: 'andrea@email.com', tipologia: 'Online', date: '25/02/2024' },
-  ];
+
+  public dataTable: ManualPocketReportTable[] = [];
+  
+  constructor(private service: ZeccaService) {}
+  
+  ngAfterViewInit() {
+    this.service.getManualReports().subscribe((r) => {
+      this.dataTable = r.map(report => ({
+        ...report,
+        date: new Date(report.date).toDateString(),
+        tradeType: report.tradeType === 'physic' ? 'fisico' : 'online'
+      }));
+    })
+
+  }
+
+  
 }

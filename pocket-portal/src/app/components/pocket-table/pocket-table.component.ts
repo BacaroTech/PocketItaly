@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Pipe, PipeTransform } from '@angular/core';
+import {
+  Component,
+  Input,
+} from '@angular/core';
 
 type PocketSortColumn = "ASC" | "DESC";
 
@@ -28,13 +31,12 @@ export class PocketTableComponent {
   @Input()
   dataTable: any[] = [];
 
+  _headerKeys: string[] = [];
+
   get headerKeys(): string[] {
-     return this.headerList.map(a => a.id);
-  }
+    if (this._headerKeys.length === 0)
+     this._headerKeys = this.headerList.map(a => a.id);
 
-  transform(value: any, args:string[]): any {
-    const keys = Object.keys(value);
-
-    return keys;
+    return this._headerKeys;
   }
 }
