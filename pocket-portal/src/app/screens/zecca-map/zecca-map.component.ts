@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import * as L from 'leaflet';
 
+import { MapPocketReport } from '../../interfaces/models.interface';
+import { ZeccaService } from '../../services/zecca.service';
 import {
   purpleIcon,
   redIcon,
@@ -15,28 +17,6 @@ type MapItem = {
   id: number,
 }
 
-const mapItemList: MapItem[] = [
-  {
-    latlng: [45.4674301, 11.9289972],
-    level: 'high',
-    id: 1212
-  },
-  {
-    latlng: [45.4465455, 12.3174661],
-    level: 'low',
-    id: 124512
-  },
-  {
-    latlng: [45.9765435, 11.3194661],
-    level: 'low',
-    id: 124516
-  },
-  {
-    latlng: [45.4265425, 9.3154661],
-    level: 'high',
-    id: 122512
-  }
-]
 
 @Component({
   selector: 'app-zecca-map',
@@ -48,16 +28,23 @@ const mapItemList: MapItem[] = [
 export class ZeccaMapComponent {
   private map!: L.Map
 
-  markers: L.Marker[] = [];
+  private markers: L.Marker[] = [];
+  private report: MapPocketReport[] = [];
+  
+  constructor(private service: ZeccaService) {}
 
-  initMarker(): L.Marker[] {
+  ngOnInit(): void {
+
+    
+  }
+  initMarker() {
 
     const markers: L.Marker[] = [];
-    for (const mapItem of mapItemList) {
-      const m = L.marker(mapItem.latlng, { icon: mapItem.level === 'high' ? redIcon : purpleIcon })
+    for (const mapItem of this.report) {
+      const m = L.marker([mapItem.lat, mapItem.long], { icon: mapItem.outcome === "positive" ? purpleIcon : redIcon })
       m.bindPopup(
         '<div class="flex flex-col justify-center items-center">' +
-        '<p class="w-fit text-lg text-white">Segnalazione n.' + mapItem.id + '</p>' +
+        '<p class="w-fit text-lg text-white">Segnalazione n.' + mapItem.reportNumber + '</p>' +
         '<button class="rounded-full bg-pocket_yellow px-10 py-1 text-lg font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600"> Visualizza </button>' +
         '</div>'
         , {
@@ -66,14 +53,18 @@ export class ZeccaMapComponent {
       markers.push(m);
     }
 
-    return markers;
+    this.markers = markers;
   }
 
   ngAfterViewInit() {
-    this.markers = this.initMarker();
-    this.initializeMap();
-    this.addMarkers();
-    this.centerMap();
+    this.service.getMapReports().subscribe((r) => {
+      this.report = r;
+      this.initMarker();
+      this.initializeMap();
+      this.addMarkers();
+      this.centerMap();
+    })
+
   }
 
 
