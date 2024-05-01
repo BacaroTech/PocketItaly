@@ -1,6 +1,43 @@
 import { Component } from '@angular/core';
+
 import * as L from 'leaflet';
+
+import {
+  purpleIcon,
+  redIcon,
+} from './icons';
+
 L.Icon.Default.imagePath = 'assets/leaflet/';
+type LevelWarning = 'low' | 'high'
+type MapItem = {
+  latlng: L.LatLngExpression,
+  level: LevelWarning,
+  id: number,
+}
+
+const mapItemList: MapItem[] = [
+  {
+    latlng: [45.4674301, 11.9289972],
+    level: 'high',
+    id: 1212
+  },
+  {
+    latlng: [45.4465455, 12.3174661],
+    level: 'low',
+    id: 124512
+  },
+  {
+    latlng: [45.9765435, 11.3194661],
+    level: 'low',
+    id: 124516
+  },
+  {
+    latlng: [45.4265425, 9.3154661],
+    level: 'high',
+    id: 122512
+  }
+]
+
 @Component({
   selector: 'app-zecca-map',
   standalone: true,
@@ -11,12 +48,29 @@ L.Icon.Default.imagePath = 'assets/leaflet/';
 export class ZeccaMapComponent {
   private map!: L.Map
 
-  markers: L.Marker[] = [
-    L.marker([45.4674301, 11.9289972]), // Padova
-    L.marker([45.4465455, 12.3174661]) // Venezia
-  ];
+  markers: L.Marker[] = [];
+
+  initMarker(): L.Marker[] {
+
+    const markers: L.Marker[] = [];
+    for (const mapItem of mapItemList) {
+      const m = L.marker(mapItem.latlng, { icon: mapItem.level === 'high' ? redIcon : purpleIcon })
+      m.bindPopup(
+        '<div class="flex flex-col justify-center items-center">' +
+        '<p class="w-fit text-lg text-white">Segnalazione n.' + mapItem.id + '</p>' +
+        '<button class="rounded-full bg-pocket_yellow px-10 py-1 text-lg font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600"> Visualizza </button>' +
+        '</div>'
+        , {
+          'className': 'popupCustom'
+        })
+      markers.push(m);
+    }
+
+    return markers;
+  }
 
   ngAfterViewInit() {
+    this.markers = this.initMarker();
     this.initializeMap();
     this.addMarkers();
     this.centerMap();
