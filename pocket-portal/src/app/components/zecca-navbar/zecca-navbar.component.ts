@@ -29,7 +29,7 @@ export class ZeccaNavbarComponent {
     },
     content: {}
   };
-  constructor(private userSession: UserSessionService, private router: Router) {}
+  constructor(private userSession: UserSessionService, private router: Router) { }
 
   logout() {
     this.userSession.logoutUser();

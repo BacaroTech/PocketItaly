@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {
   PocketHeaderTable,
   PocketTableComponent,
 } from '../../components/pocket-table/pocket-table.component';
+import { WebPocketReport } from '../../interfaces/models.interface';
 import { ZeccaService } from '../../services/zecca.service';
 
 @Component({
@@ -38,7 +40,10 @@ export class ZeccaWebSitesComponent {
   ];
   dataTable: any[] = [];
 
-  constructor(private service: ZeccaService) {}
+  constructor(
+    private service: ZeccaService,
+    private router: Router
+  ) {}
   
   ngAfterViewInit() {
     this.service.getWebReports().subscribe((r) => {
@@ -49,4 +54,8 @@ export class ZeccaWebSitesComponent {
     })
 
   }
+  openDetail(item: WebPocketReport) {
+    this.router.navigateByUrl('zecca/web-site/' + item.id)
+  }
+  
 }

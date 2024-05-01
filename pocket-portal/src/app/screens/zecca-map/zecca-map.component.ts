@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import * as L from 'leaflet';
 
@@ -7,7 +8,7 @@ import { ZeccaService } from '../../services/zecca.service';
 import {
   purpleIcon,
   redIcon,
-} from './icons';
+} from '../../utils/icons';
 
 L.Icon.Default.imagePath = 'assets/leaflet/';
 type LevelWarning = 'low' | 'high'
@@ -30,13 +31,12 @@ export class ZeccaMapComponent {
 
   private markers: L.Marker[] = [];
   private report: MapPocketReport[] = [];
-  
-  constructor(private service: ZeccaService) {}
 
-  ngOnInit(): void {
+  constructor(
+    private service: ZeccaService,
+    private router: Router
+  ) { }
 
-    
-  }
   initMarker() {
 
     const markers: L.Marker[] = [];
@@ -45,15 +45,27 @@ export class ZeccaMapComponent {
       m.bindPopup(
         '<div class="flex flex-col justify-center items-center">' +
         '<p class="w-fit text-lg text-white">Segnalazione n.' + mapItem.reportNumber + '</p>' +
-        '<button class="rounded-full bg-pocket_yellow px-10 py-1 text-lg font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600"> Visualizza </button>' +
+        '<button class="detail rounded-full bg-pocket_yellow px-10 py-1 text-lg font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600"> Visualizza </button>' +
         '</div>'
         , {
           'className': 'popupCustom'
+        }
+      )
+        .on("popupopen", (a) => {
+          const popUp = a.target.getPopup()
+          popUp.getElement()
+            .querySelector(".detail")
+            .addEventListener("click", () => {
+              this.openDetail(mapItem);
+            });
         })
       markers.push(m);
     }
 
     this.markers = markers;
+  }
+  openDetail(item: MapPocketReport) {
+    this.router.navigateByUrl('zecca/map/' + item.id)
   }
 
   ngAfterViewInit() {
@@ -67,13 +79,11 @@ export class ZeccaMapComponent {
 
   }
 
-
   private initializeMap() {
     const baseMapURl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
     this.map = L.map('map');
     L.tileLayer(baseMapURl).addTo(this.map);
   }
-
 
   private addMarkers() {
     // Add your markers to the map

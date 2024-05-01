@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
+
+import {
+  FactoryHomeComponent,
+} from './screens/factory-home/factory-home.component';
 import { ZeccaHomeComponent } from './screens/zecca-home/zecca-home.component';
-import { FactoryHomeComponent } from './screens/factory-home/factory-home.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +46,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'map/:id',
+        loadComponent: () =>
+          import('./screens/zecca-map-detail/zecca-map-detail.component').then(
+            (mod) => mod.ZeccaMapDetailComponent,
+          )
+      },
+      {
         path: 'web-site',
         loadComponent: () =>
           import('./screens/zecca-web-sites/zecca-web-sites.component').then(
@@ -50,10 +60,24 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'web-site/:id',
+        loadComponent: () =>
+          import('./screens/zecca-web-detail/zecca-web-detail.component').then(
+            (mod) => mod.ZeccaWebDetailComponent,
+          )
+      },
+      {
         path: 'report',
         loadComponent: () =>
           import('./screens/zecca-report/zecca-report.component').then(
             (mod) => mod.ZeccaReportComponent,
+          )
+      },
+      {
+        path: 'report/:id',
+        loadComponent: () =>
+          import('./screens/zecca-report-full-detail/zecca-report-full-detail.component').then(
+            (mod) => mod.ZeccaReportFullDetailComponent,
           )
       },
       {

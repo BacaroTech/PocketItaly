@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import {
+  first,
   map,
   Observable,
 } from 'rxjs';
@@ -19,10 +20,43 @@ import {
 })
 export class ZeccaService {
 
+  fakeCacheReports: RawPocketReport[] = [];
+
   constructor(private http: HttpClient) { }
 
   getReports() {
     return this.http.get<RawPocketReport[]>("/assets/mock/report.json");
+    // if (this.fakeCacheReports.length === 0)
+    //   return this.http.get<RawPocketReport[]>("/assets/mock/report.json")
+    //     .pipe(
+    //       switchMap(r => {
+    //         this.fakeCacheReports = r;
+    //         return of(r);
+    //       })
+    //     )
+    // else
+    //   return of(this.fakeCacheReports);
+  }
+  getMapReportById(id: string): Observable<MapPocketReport | undefined> {
+    return this.getMapReports()
+      .pipe(
+        map(manuals => manuals.find(m => m.id === id)),
+        first()
+      )
+  }
+  getManualReportById(id: string): Observable<ManualPocketReport | undefined> {
+    return this.getManualReports()
+      .pipe(
+        map(manuals => manuals.find(m => m.id === id)),
+        first()
+      )
+  }
+  getWebReportById(id: string): Observable<WebPocketReport | undefined> {
+    return this.getWebReports()
+      .pipe(
+        map(manuals => manuals.find(m => m.id === id)),
+        first()
+      )
   }
 
   getWebReports(): Observable<WebPocketReport[]> {

@@ -35,6 +35,11 @@ JG.repeat(1000, 1000, {
             return JG.floating(6, 18, 6);
         return null;
     },
+    city() {
+        if (this.reportType === "map") 
+            return JG.city()
+        return null;
+    },
     tradeType() {
         if (this.reportType === "manual")
             return JG.random("online", "physic");
@@ -61,6 +66,16 @@ JG.repeat(1000, 1000, {
         else return null;
     },
     domain() {
+        if (this.reportType === "web") {
+            return JG.loremIpsum({ units: 'words', count: 2 });
+        } else return null;
+    },
+    objectType() {
+        if (this.reportType === "web") {
+            return JG.loremIpsum({ units: 'words', count: 3 });
+        } else return null;
+    },
+    productOwner() {
         if (this.reportType === "web") {
             return JG.loremIpsum({ units: 'words', count: 2 });
         } else return null;

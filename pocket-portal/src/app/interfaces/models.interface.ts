@@ -12,7 +12,7 @@ type OutcomeType = "positive" | "negative";
 type AnalysisType = "link" | "code" | "image"
 
 export interface BasePocketReport {
-  id: number;
+  id: string;
   reportNumber: string;
   date: string;
   reportType: ReportType;
@@ -26,6 +26,7 @@ export interface BasePocketReport {
 export interface MapPocketReport extends BasePocketReport {
   lat: number;
   long: number;
+  city: string;
 }
 
 export interface ManualPocketReport extends BasePocketReport {
@@ -37,6 +38,8 @@ export interface ManualPocketReport extends BasePocketReport {
 export interface WebPocketReport extends BasePocketReport {
   domain: string;
   urlProduct: string;
+  objectType: string;
+  productOwner: string;
 }
 
 export interface RawPocketReport extends BasePocketReport {

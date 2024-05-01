@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {
   PocketHeaderTable,
@@ -33,10 +34,6 @@ export class ZeccaReportComponent {
       label: 'Tipologia'
     },
     {
-      id: 'levelFake',
-      label: 'Grado'
-    },
-    {
       id: 'date',
       label: 'Data'
     }
@@ -44,7 +41,10 @@ export class ZeccaReportComponent {
 
   public dataTable: ManualPocketReportTable[] = [];
   
-  constructor(private service: ZeccaService) {}
+  constructor(
+    private service: ZeccaService,
+    private router: Router
+  ) {}
   
   ngAfterViewInit() {
     this.service.getManualReports().subscribe((r) => {
@@ -57,5 +57,8 @@ export class ZeccaReportComponent {
 
   }
 
+  openDetail(item: ManualPocketReportTable) {
+    this.router.navigateByUrl('zecca/report/' + item.id)
+  }
   
 }
