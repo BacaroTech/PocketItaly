@@ -1,7 +1,21 @@
 # PocketItaly
 
 ## Descrizione Progetto
-Giorgio
+Pocket Italy nasce con l’obbiettivo di tutelare il mercato della moda Made in Italy in Italia e all’estero, andando a fornire degli strumenti utili per tutti gli attori che sono coinvolti nel mondo della contraffazione: Utente finale, rivenditore e/o produttore e la Zecca dello Stato.
+
+L'utente attraverso la nostra applicazione scaricata sul suo smartphone, è in grado di identificare se un articolo è certificato Made in Italy o meno, attraverso un processo di scansione fisica o digitale dell’articolo. Inoltre l'utente può inviare una segnalazione alla Zecca dello Stato per eventuali acquisti effettuati prima di usare l’applicazione.
+
+Il prodotto acquistato dall’utente finale non è solo fisico ma anche digitale. Infatti il produttore è autorizzato a creare un token che certifichi in modo univoco l’articolo creato e permetta di visualizzare lo storico della proprietà del bene. Questo meccanismo permette di tutelare tutti i mercati. (B2B, B2C e C2C).
+
+Ogni volta che un utente genera report(passivo) o invia una segnalazione(attivo) va a confluire all’interno di un portale messo a disposizione alla Zecca dello Stato, in modo tale da monitorare le possibili contraffazioni e in tal caso intervenire in maniera diretta per vie legali. 
+
+Infine, l’applicazione prevede una parte di istruzione dove l’utente può informarsi sulle ultime notizie sul tema della contraffazione e apprendere delle nozioni riguardo tale argomento, oltre alla possibibilità di riscattare dei codici sconto da usare nei negozi affliati dopo N scansioni, dove N è incognito agli utenti
+
+## Figma app mobile 
+https://www.figma.com/file/5zGqQkbv1qP0dlcD99nf6j/Pocket-Italy-App?type=design&t=XzP8tLn4shKsSsmi-6
+
+## Figma portale web
+https://www.figma.com/file/RDT5TnesSqZ2rihng3ypCT/Pocket-Italy-Portal?type=design&t=XzP8tLn4shKsSsmi-6
 
 ## Sorgenti Backend
 https://github.com/BacaroTech/PocketItaly-Server
