@@ -1,7 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FactoryPageLayoutComponent } from '../../components/factory-page-layout/factory-page-layout.component';
-import { ReactiveFormsModule, FormGroup, FormControl, FormArray } from '@angular/forms';
-import { CommonModule, NgSwitch } from '@angular/common';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
+
+import {
+  FactoryPageLayoutComponent,
+} from '../../components/factory-page-layout/factory-page-layout.component';
 
 type CountStep = 1 | 2;
 type DocsUpload = {
@@ -20,7 +28,7 @@ type DocsUpload = {
 export class FactoryCreateStoreComponent {
 
   createSuccess: boolean = false;
-  step: CountStep = 2;
+  step: CountStep = 1;
   readonly subTitleCreation = "Completa il form per registrare un nuovo negozio";
   readonly subTitleCreated = "Operazione completata"
   get subTitle() {
