@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { UserSessionService } from '../../services/user-session.service';
 
 @Component({
@@ -21,14 +26,20 @@ export class LoginComponent {
 
   login() {
     const email = this.form?.value.email;
-    if (email === 'factory') {
-      this.loginUser(email);
+    if (email === 'produttore') {
+      this.loginReseller(email);
+    } else if (email === 'venditore') {
+      this.loginFactory(email);
     } else if (email === 'zecca') {
       this.loginPa(email);
     }
   }
 
-  loginUser(email: string) {
+  loginReseller(email: string) {
+    this.userSession.storeUser(email);
+    this.router.navigateByUrl('/factory/home')
+  };
+  loginFactory(email: string) {
     this.userSession.storeUser(email);
     this.router.navigateByUrl('/factory/home')
   };

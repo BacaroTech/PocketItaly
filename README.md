@@ -23,6 +23,29 @@ https://github.com/BacaroTech/PocketItaly-Server
 ## Demo Portale
 https://pocket-italy.github.io/home-login
 
+abbiamo creato una demo per visualizzare cosa può vedere i tre tipi di utenti
+
+Utenti:
+- zecca
+- produttore
+- venditore
+
+Tutti i dati sono moccati in assets file.
+Per simulare la login è sufficiente inserire nel campo della email un dei seguenti campi e cliccare su login
+
+utente: zecca
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+utente: produttore
+![alt text](image-2.png)
+![alt text](image-3.png)
+
+utente: venditore
+![alt text](image-4.png)
+![alt text](image-5.png)
+
 ## Mobile
 ```
 cd PocketMobile

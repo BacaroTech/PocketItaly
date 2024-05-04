@@ -38,7 +38,7 @@ export const zeccaList: RouteProps[] = [
     },
   }
 ];
-export const factoryList: RouteProps[] = [
+export const resellerList: RouteProps[] = [
   {
     title: 'Negozi',
     href: '/factory/store',
@@ -59,6 +59,15 @@ export const factoryList: RouteProps[] = [
       images: { light: 'accordion-light.svg', dark: 'accordion-dark.svg' },
     },
   },
+  {
+    title: 'Profilo',
+    icon: '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>',
+    href: '/factory/profile',
+    group: false
+  }
+]
+export const factoryList: RouteProps[] = [
+
   {
     title: 'Crea Lotto',
     icon: '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>',
@@ -83,10 +92,6 @@ export const factoryList: RouteProps[] = [
     title: 'Profilo',
     icon: '<svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 20 20" class="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path></svg>',
     href: '/factory/profile',
-    group: false,
-    card: {
-      className: 'w-56',
-      images: { light: 'alerts-light.svg', dark: 'alerts-dark.svg' },
-    },
+    group: false
   }
 ];

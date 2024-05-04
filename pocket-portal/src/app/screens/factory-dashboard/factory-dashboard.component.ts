@@ -8,7 +8,7 @@ import {
   RouterLink,
 } from '@angular/router';
 
-import { factoryList } from 'src/app/interfaces';
+import { RouteProps } from 'src/app/interfaces';
 import { UserSessionService } from 'src/app/services';
 
 @Component({
@@ -20,9 +20,13 @@ import { UserSessionService } from 'src/app/services';
 })
 export class FactoryDashboardComponent {
 
-  components = factoryList.filter((component) => !!component.card);
+  components: RouteProps[] = [];
 
   constructor(private userSession: UserSessionService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.components = [...this.userSession.getMenuList()].filter((component) => !!component.card);
+  }
 
   logout() {
     this.userSession.logoutUser();

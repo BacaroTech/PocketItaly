@@ -10,12 +10,9 @@ import {
   SidebarItemComponent,
   SidebarItemComponentBtn,
   SidebarItemGroupComponent,
-} from '../../flowbit-components';
-import {
-  factoryList,
-  RouteProps,
-} from '../../interfaces/menuList';
-import { UserSessionService } from '../../services/user-session.service';
+} from 'src/app/flowbit-components';
+import { RouteProps } from 'src/app/interfaces';
+import { UserSessionService } from 'src/app/services';
 
 @Component({
   selector: 'app-factory-sidebar',
@@ -25,12 +22,16 @@ import { UserSessionService } from '../../services/user-session.service';
   styleUrl: './factory-sidebar.component.css'
 })
 export class FactorySidebarComponent {
-  menuList: RouteProps[] = [...factoryList]
+  menuList: RouteProps[] = []
 
   constructor(
     private userSession: UserSessionService, 
     private router: Router
   ) {}
+
+  ngOnInit(): void {
+    this.menuList = [...this.userSession.getMenuList()];
+  }
 
   logout() {
     this.userSession.logoutUser();
