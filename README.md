@@ -48,6 +48,59 @@ Per simulare la login è sufficiente inserire nel campo della email un dei segue
 <img src="image-4.png" alt="image" width="300" height="auto">
 <img src="image-5.png" alt="image" width="300" height="auto">
 
+# Architettura
+
+Per il nostro progetto abbiamo scelto un'architettura che ottimizza i tempi di conseguenza abbiamo
+deciso di utilizzare un server Node.js accoppiato a un database PostgreSQL.
+
+Questa è l'architettura semplificata che abbiamo ideato nell'ipotetico caso il progetto dovesse 
+effettivamente realizzarsi.
+
+## Panoramica dell'Architettura basata su AWS
+
+<img src="Architettura_PI.png" alt="image" width="900" height="auto">
+
+Questa architettura sfrutta AWS per garantire affidabilità e robustezza, consentendo una gestione efficace anche durante picchi imprevisti di traffico. Semplifica il processo di replica dei sistemi in più zone, accelerando il recupero in scenari di disastro rispetto ai sistemi on-premise.
+
+## Componenti dell'Applicazione
+
+### Portali Web
+- **Distribuzione CDN**: Due portali web distribuiti attraverso una Content Delivery Network per ottimizzare la velocità e la disponibilità.
+
+### Applicazione Mobile
+- **Distribuzione nei Store**: Disponibile nei vari store di applicazioni, garantendo accessibilità e scalabilità.
+
+## Sicurezza
+
+- **Web Application Firewall (WAF)**: Protegge le distribuzioni dai comuni attacchi web.
+- **Autenticazione Multi-Fattore (MFA)**: Richiesta obbligatoria per aumentare la sicurezza degli account utente.
+- **SPID**: Integrazione con SPID per facilitare un accesso sicuro, sfruttando una piattaforma già utilizzata da circa 37 milioni di persone.
+
+## Gestione delle API
+
+- **API Gateway**: Distribuisce le richieste alle funzioni AWS Lambda, che possono essere eseguite in parallelo per gestire elevati volumi di traffico.
+- **Lambda per l'Autorizzazione**: Gestisce l'autorizzazione a livello di API Gateway. Le autorizzazioni sono salvate in cache per accelerare l'accesso alle richieste successive.
+
+## Storage e Database
+
+- **DynamoDB**: Archivia i dati delle transazioni tra i microservizi.
+- **PostgreSQL**: Database relazionale per i dati applicativi, offrendo controllo e affidabilità. La scalabilità orizzontale è garantita da repliche di lettura.
+- **Quantum Ledger Database (QLDB)**: Utilizzato per archiviare in modo sicuro e immutabile i dati delle transazioni dei token.
+- **Elasticache**: Utilizzato per il caching dell'autorizzazione e per ottimizzare la velocità dell'applicazione.
+
+## Gestione dei Contenuti
+
+- **Drupal**: Gestisce la creazione di contenuti per la sezione news e sensibilizzazione, facilitando la pubblicazione di articoli e altri contenuti attraverso l'applicazione
+              ed evitando la creazione di un portale dedicato all'aggiunta di contenuto.
+
+## Analisi dei Dati
+
+- **ETL e S3 Bucket**: I dati sono aggregati e trasformati attraverso processi ETL e salvati in un bucket S3 dedicato.
+- **Athena e SageMaker**: Athena permette di interrogare i dati nel bucket S3. SageMaker è utilizzato per creare e addestrare modelli di machine learning basati su questi dati.
+
+In conclusione, questa architettura su AWS non solo assicura alta disponibilità e resilienza, ma integra anche soluzioni avanzate per la sicurezza, la gestione delle API, il caching e l'analisi dei dati, rendendo l'intera soluzione scalabile, sicura e efficiente.
+
+
 
 # Sorgenti
 Di seguito come installare e avviare i tre sorgenti
