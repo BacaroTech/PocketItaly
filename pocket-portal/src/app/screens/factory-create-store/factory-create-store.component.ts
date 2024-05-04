@@ -1,14 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FactoryPageLayoutComponent } from '../../components/factory-page-layout/factory-page-layout.component';
-import { ReactiveFormsModule, FormGroup, FormControl, FormArray } from '@angular/forms';
-import { CommonModule, NgSwitch } from '@angular/common';
+import {
+  FormArray,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
 
-type CountStep = 1 | 2;
-type DocsUpload = {
-  name: string;
-  file: any
-}
-
+import { FactoryPageLayoutComponent } from 'src/app/components';
+import {
+  CountStep,
+  DocsStore,
+} from 'src/app/interfaces';
+import { FormFactoryUtils } from 'src/app/utils';
 
 @Component({
   selector: 'app-factory-create-store',
@@ -20,7 +24,7 @@ type DocsUpload = {
 export class FactoryCreateStoreComponent {
 
   createSuccess: boolean = false;
-  step: CountStep = 2;
+  step: CountStep = 1;
   readonly subTitleCreation = "Completa il form per registrare un nuovo negozio";
   readonly subTitleCreated = "Operazione completata"
   get subTitle() {
@@ -33,16 +37,17 @@ export class FactoryCreateStoreComponent {
     'vat': new FormControl(''),
     'address': new FormControl(''),
     'province': new FormControl(''),
+    'city': new FormControl(''),
     'cap': new FormControl(''),
-    'photo': new FormControl<DocsUpload | null>(null),
+    'photo': new FormControl<DocsStore | null>(null),
     'docs': new FormArray([]),
   });
 
   goNext() {
-    this.step = _next(this.step);
+    this.step = FormFactoryUtils.next(this.step);
   }
   goBack() {
-    this.step = _back(this.step);
+    this.step = FormFactoryUtils.back(this.step);
   }
   onPhotoPicked(event: Event) {
     const files = (event.target as HTMLInputElement).files;
@@ -89,19 +94,4 @@ export class FactoryCreateStoreComponent {
     }
   }
 }
-function _next(step: CountStep): CountStep {
-  switch (step) {
-    case 1:
-      return 2;
-    case 2:
-      return 2;
-  }
-}
-function _back(step: CountStep): CountStep {
-  switch (step) {
-    case 1:
-      return 1;
-    case 2:
-      return 1;
-  }
-}
+

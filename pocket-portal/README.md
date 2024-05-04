@@ -1,7 +1,7 @@
 # PocketPortal
 
 ## Deploy
-ng deploy --base-href=https://pocket-italy.github.io/pocket-italy.github.io/
+ng deploy --base-href=https://pocket-italy.github.io/
 
 
 

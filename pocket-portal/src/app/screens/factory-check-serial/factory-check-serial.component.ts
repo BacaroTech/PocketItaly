@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
-import { FactoryPageLayoutComponent } from '../../components/factory-page-layout/factory-page-layout.component';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+} from '@angular/forms';
+
+import { FactoryPageLayoutComponent } from 'src/app/components';
 
 @Component({
   selector: 'app-factory-check-serial',

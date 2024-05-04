@@ -5,7 +5,7 @@ import {
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { zeccaList } from '../../interfaces/menuList';
+import { zeccaList } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-zecca-dashboard',

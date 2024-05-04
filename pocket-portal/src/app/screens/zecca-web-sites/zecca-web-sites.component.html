@@ -1,1 +1,6 @@
-<app-pocket-table [headerList]="headerList" [dataTable]="dataTable" />
+<div class="mx-10 mt-10">
+    <app-pocket-table 
+    (detailClick)="openDetail($event)"
+    [headerList]="headerList"
+    [dataTable]="dataTable" />
+</div>

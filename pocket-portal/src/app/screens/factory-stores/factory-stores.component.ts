@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FactoryPageLayoutComponent } from '../../components/factory-page-layout/factory-page-layout.component';
-import { FactoryItemStore } from '../../interfaces/models.interface';
-import { FactoryStoreItemComponent } from '../../components/factory-store-item/factory-store-item.component';
-import { CommonModule } from '@angular/common';
 
+import {
+  FactoryPageLayoutComponent,
+  FactoryStoreItemComponent,
+} from 'src/app/components';
+import { FactoryItemStore } from 'src/app/interfaces';
+import { FactoryStoresService } from 'src/app/services';
 
 @Component({
   selector: 'app-factory-stores',
@@ -15,30 +18,23 @@ import { CommonModule } from '@angular/common';
 })
 export class FactoryStoresComponent {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: FactoryStoresService) { }
 
   storesList: FactoryItemStore[] = [
-    {
-      id: 123,
-      img: '/assets/img/shop1.png',
-      address: 'via rossi 12 Castelfranco Veneto, TV',
-      name: 'Colors of Benetton Castelfranco'
-    },
-    {
-      id: 231,
-      img: '/assets/img/shop1.png',
-      address: 'via Matteotti 35 Padova',
-      name: 'Colors of Benetton Padova'
-    }
-  ];
 
+  ];
+  ngAfterViewInit() {
+    this.service.getStores().subscribe((r) => {
+      this.storesList = r
+    })
+  }
   goCheckSerial() {
     this.router.navigateByUrl('factory/check-serial')
   }
+
   addStore() {
     console.log("crete")
     this.router.navigateByUrl('factory/create-store')
-
   }
 
 }

@@ -1,0 +1,1 @@
+export * from './zecca-report-detail.component';

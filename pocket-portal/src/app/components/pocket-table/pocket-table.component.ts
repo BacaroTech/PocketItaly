@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, Pipe, PipeTransform } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 type PocketSortColumn = "ASC" | "DESC";
 
@@ -22,19 +27,34 @@ type PocketHeaderRows = {
   styleUrl: './pocket-table.component.css'
 })
 export class PocketTableComponent {
+  
+  @Output() 
+  detailClick: EventEmitter<any> = new EventEmitter();
 
   @Input()
   headerList: PocketHeaderTable[] = [];
   @Input()
   dataTable: any[] = [];
 
+  indexClicked: number | null = null;
+  _headerKeys: string[] = [];
+
   get headerKeys(): string[] {
-     return this.headerList.map(a => a.id);
+    if (this._headerKeys.length === 0)
+     this._headerKeys = this.headerList.map(a => a.id);
+
+    return this._headerKeys;
   }
 
-  transform(value: any, args:string[]): any {
-    const keys = Object.keys(value);
+  clickRow(_index: number) {
+    console.log(_index, this.indexClicked)
+    if (this.indexClicked === _index) {
+      this.detailClick.emit(this.dataTable[this.indexClicked]);
+    }
+    this.indexClicked = _index;
+  }
 
-    return keys;
+  detail(item: any) {
+    this.detailClick.emit(item);
   }
 }
