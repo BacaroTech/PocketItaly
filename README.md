@@ -33,18 +33,21 @@ Utenti:
 Tutti i dati sono moccati in assets file.
 Per simulare la login è sufficiente inserire nel campo della email un dei seguenti campi e cliccare su login
 
-utente: zecca
-![alt text](image.png)
+### utente: zecca
 
-![alt text](image-1.png)
+<img src="image.png" alt="image" width="300" height="auto">
+<img src="image-1.png" alt="image" width="300" height="auto">
 
-utente: produttore
-![alt text](image-2.png)
-![alt text](image-3.png)
+### utente: produttore
 
-utente: venditore
-![alt text](image-4.png)
-![alt text](image-5.png)
+<img src="image-2.png" alt="image" width="300" height="auto">
+<img src="image-3.png" alt="image" width="300" height="auto">
+
+### utente: venditore
+
+<img src="image-4.png" alt="image" width="300" height="auto">
+<img src="image-5.png" alt="image" width="300" height="auto">
+
 
 ## Mobile
 ```
