@@ -114,8 +114,6 @@ Per installare SDK Tools di android ci sono due strade:
 
 https://developer.android.com/tools/adb
 
-
-
 ### Requisiti Per IOS
 - xcode
 - RubyGem
@@ -163,3 +161,104 @@ Avvio in locale
 ```
 npm start
 ```
+
+# Architettura
+
+Per il nostro progetto abbiamo scelto un'architettura che ottimizza i tempi di conseguenza abbiamo
+deciso di utilizzare un server Node.js accoppiato a un database PostgreSQL.
+
+Questa è l'architettura semplificata che abbiamo ideato nell'ipotetico caso il progetto dovesse 
+effettivamente realizzarsi.
+
+## Panoramica dell'Architettura basata su AWS
+
+<img src="Architettura_PI.png" alt="image" width="900" height="auto">
+
+Questa architettura sfrutta AWS per garantire affidabilità e robustezza, consentendo una gestione efficace anche durante picchi imprevisti di traffico. Semplifica il processo di replica dei sistemi in più zone, accelerando il recupero in scenari di disastro rispetto ai sistemi on-premise.
+
+## Componenti dell'Applicazione
+
+### Portali Web
+- **Distribuzione CDN**: Due portali web distribuiti attraverso una Content Delivery Network per ottimizzare la velocità e la disponibilità e applicazione distribuita negli store.
+
+## Sicurezza
+
+- **Web Application Firewall (WAF)**: Protegge le distribuzioni dai comuni attacchi web.
+- **Autenticazione Multi-Fattore (MFA)**: Richiesta obbligatoria per aumentare la sicurezza degli account utente.
+- **SPID**: Integrazione con SPID per facilitare un accesso sicuro, sfruttando una piattaforma già utilizzata da circa 37 milioni di persone.
+
+## Gestione delle API e Logica
+
+- **API Gateway**: Distribuisce le richieste alle funzioni AWS Lambda, che possono essere eseguite in parallelo per gestire elevati volumi di traffico.
+- **Lambda per l'Autorizzazione**: Gestisce l'autorizzazione a livello di API Gateway. Le autorizzazioni sono salvate in cache per accelerare l'accesso alle richieste successive.
+- **Lambda**: Lambda per implementazione dei vari microservizi.
+
+## Storage e Database
+
+- **DynamoDB**: Archivia i dati delle transazioni tra i microservizi.
+- **PostgreSQL**: Database relazionale per i dati applicativi, offrendo controllo e affidabilità. La scalabilità orizzontale è garantita da repliche di lettura.
+- **Quantum Ledger Database (QLDB)**: Utilizzato per archiviare in modo sicuro e immutabile i dati delle transazioni dei token.
+- **Elasticache**: Utilizzato per il caching dell'autorizzazione e per ottimizzare la velocità dell'applicazione.
+
+## Gestione dei Contenuti
+
+- **Drupal**: Gestisce la creazione di contenuti per la sezione news e sensibilizzazione, facilitando la pubblicazione di articoli e altri contenuti attraverso l'applicazione
+              ed evitando la creazione di un portale dedicato all'aggiunta di contenuto.
+
+## Analisi dei Dati
+
+- **ETL e S3 Bucket**: I dati sono aggregati e trasformati attraverso processi ETL e salvati in un bucket S3 dedicato.
+- **Athena e SageMaker**: Athena permette di interrogare i dati nel bucket S3. SageMaker è utilizzato per creare e addestrare modelli di machine learning basati su questi dati.
+
+
+# Interfacce Esposte
+
+<img src="Interfacce.png" alt="image" width="900" height="auto">
+
+1. **Interfaccia Impresa**:
+   - Gestisce prodotti e lotti.
+   - Crea token per i prodotti.
+2. **Interfaccia Intermediario**:
+   - Gestisce la distribuzione dei prodotti.
+   - Valida i token e gestisce la negoziazione.
+3. **Interfaccia Cliente**:
+   - Permette ai clienti di verificare i seriali dei prodotti e generare i report di conseguenza.
+   - Gestisce il portafoglio di token e le segnalazioni.
+4. **Interfaccia Amministrativa**:
+   - Gestisce le imprese e i report di segnalazione.
+
+# Funzionamento Token
+
+<img src="FlussoProdIntCos.png" alt="image" width="900" height="auto">
+
+## Flusso di distribuzione
+1. **Produttore**:
+   - Genera e firma il token, garantendo l'origine autentica e l'integrità del prodotto.
+2. **Intermediario**:
+   - Riceve il token dal produttore.
+   - Valida il token per confermarne l'autenticità e continua la catena di distribuzione.
+3. **Consumatore**:
+   - Riceve il token dall'intermediario.
+   - Valida il token e, se confermato, accetta il prodotto.
+
+## Azioni e Risoluzioni
+- **Validazione**: Ogni partecipante deve validare il token prima di passarlo al successivo.
+- **Segnalazioni**: Se il token non è valido, possono essere effettuate segnalazioni per ulteriori indagini.
+
+
+<img src="FlussoToken.png" alt="image" width="900" height="auto">
+
+## Flusso di Validazione
+1. **Inizio Scambio**:
+   - Utente A inizia l'invio del token a Utente B.
+2. **Ricezione e Validazione**:
+   - Utente B riceve il token.
+   - Utente B valida il token per verificarne l'autenticità.
+3. **Risoluzione**:
+   - **Token Valido**: Se il token è valido, il processo procede.
+   - **Token Non Valido**: Utente B ha opzioni per riprovare la transazione o fare una segnalazione.
+
+## Azioni
+- **Prossimo Scambio**: Se il token è valido, procede al prossimo passo.
+- **Riprova Transazione**: Se il token non è valido, può essere riprovata la transazione.
+- **Segnalazione**: In caso di invalidità del token, può essere fatta una segnalazione.
