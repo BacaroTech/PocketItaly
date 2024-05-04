@@ -1,0 +1,52 @@
+[
+    {
+        "id": 123,
+        "img": "/assets/img/shop1.png",
+        "imgName": "shop1.png",
+        "address": "via rossi 12",
+        "city": "Castelfranco Veneto",
+        "province": "TV",
+        "cap": "31033",
+        "vat": "03490770264",
+        "name": "Colors of Benetton Castelfranco",
+        "docs": [
+            {
+                "id": 1,
+                "name": "Certificato 1"
+            },
+            {
+                "id": 2,
+                "name": "Certificato 1"
+            },
+            {
+                "id": 3,
+                "name": "Certificato 3"
+            },
+            {
+                "id": 4,
+                "name": "Certificato 4"
+            }
+        ]
+    },
+    {
+        "id": 231,
+        "img": "/assets/img/shop1.png",
+        "imgName": "shop1.png",
+        "address": "via Matteotti 35",
+        "city": "Padova",
+        "province": "PD",
+        "cap": "35100",
+        "vat": "03490770264",
+        "name": "Colors of Benetton Padova",
+        "docs": [
+            {
+                "id": 1,
+                "name": "Certificato 1"
+            },
+            {
+                "id": 2,
+                "name": "Certificato 1"
+            }            
+        ]
+    }
+]

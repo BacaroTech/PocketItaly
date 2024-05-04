@@ -1,0 +1,41 @@
+<div>
+    <div *ngIf="store">
+        <img class="w-full h-56 mx-0 object-cover"
+             [src]="store.img"
+             alt="">
+        <div class="flex flex-col mx-4">
+            <h1 class="text-[54px] font-bold text-left text-black">{{store.name}}</h1>
+            <div class="w-full flex flex-col gap-1">
+                <label class="text-[24px] font-normal text-left text-black">Indirizzzo: {{store.address}}</label>
+                <label class="text-[24px] font-normal text-left text-black">Città: {{store.city}}</label>
+                <label class="text-[24px] font-normal text-left text-black">Provincia: {{store.province}}</label>
+                <label class="text-[24px] font-normal text-left text-black">CAP: {{store.cap}}</label>
+                <label class="text-[24px] font-normal text-left text-black">IVA: {{store.vat}}</label>
+            </div>
+            <h1 class="text-[31px] font-bold text-left text-black">Documenti caricati</h1>
+            <div *ngIf="store.docs.length > 0"
+                 class="grid grid-cols-2 gap-5">
+                <div *ngFor="let doc of store.docs"
+                     class="flex items-center justify-center">
+                    <label class="bg-pocket_purple text-[18px] text-white px-14 py-2 rounded-3xl">
+                        {{doc.name}}
+                    </label>
+                </div>
+            </div>
+            <div class="mt-10 flex justify-center gap-4">
+                <button type="button"
+                        (click)="goToWarehouse()"
+                        class="flex justify-center rounded-full bg-pocket_yellow px-20 py-2 text-[24px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600">
+                    Inventario
+                </button>
+                <button type="button"
+                        (click)="goToUpdate()"
+                        class="flex justify-center rounded-full bg-white px-20 py-2 text-[24px] font-normal leading-8 text-black shadow-sm hover:bg-gray-300 hover:text-gray-800 focus-visible:outline 
+        border-2 border-gray-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-600">
+                    Aggiorna
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -4,9 +4,9 @@ import { Router } from '@angular/router';
 import {
   PocketHeaderTable,
   PocketTableComponent,
-} from '../../components/pocket-table/pocket-table.component';
-import { WebPocketReport } from '../../interfaces/models.interface';
-import { ZeccaService } from '../../services/zecca.service';
+} from 'src/app/components';
+import { WebPocketReport } from 'src/app/interfaces';
+import { ZeccaService } from 'src/app/services';
 
 @Component({
   selector: 'app-zecca-web-sites',

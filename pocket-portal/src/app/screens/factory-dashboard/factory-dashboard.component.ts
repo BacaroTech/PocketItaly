@@ -1,8 +1,15 @@
-import { NgClass, NgFor } from '@angular/common';
+import {
+  NgClass,
+  NgFor,
+} from '@angular/common';
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { factoryList } from '../../interfaces/menuList';
-import { UserSessionService } from '../../services/user-session.service';
+import {
+  Router,
+  RouterLink,
+} from '@angular/router';
+
+import { factoryList } from 'src/app/interfaces';
+import { UserSessionService } from 'src/app/services';
 
 @Component({
   selector: 'app-factory-dashboard',

@@ -2,8 +2,8 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { WebPocketReport } from '../../interfaces/models.interface';
-import { ZeccaService } from '../../services/zecca.service';
+import { WebPocketReport } from 'src/app/interfaces';
+import { ZeccaService } from 'src/app/services';
 
 @Component({
   selector: 'app-zecca-web-detail',

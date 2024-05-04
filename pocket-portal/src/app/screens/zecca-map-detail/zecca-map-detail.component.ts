@@ -3,13 +3,12 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import * as L from 'leaflet';
-
-import { MapPocketReport } from '../../interfaces/models.interface';
-import { ZeccaService } from '../../services/zecca.service';
+import { MapPocketReport } from 'src/app/interfaces';
+import { ZeccaService } from 'src/app/services';
 import {
   purpleIcon,
   redIcon,
-} from '../../utils/icons';
+} from 'src/app/utils';
 
 @Component({
   selector: 'app-zecca-map-detail',

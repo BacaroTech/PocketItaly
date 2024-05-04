@@ -1,4 +1,8 @@
-<figure class="md:flex bg-pocket_yellow_p-300 rounded-[4rem] h-40 p-0 dark:bg-pocket_yellow_p-300 overflow-hidden text-ellipsis">
+<figure class="md:flex bg-pocket_yellow_p-300 
+hover:cursor-pointer
+rounded-[4rem] h-40 p-0 dark:bg-pocket_yellow_p-300 overflow-hidden text-ellipsis"
+(click)="openDetail(store)"
+>
   <img class="w-48 mx-0 object-cover" [src]="store.img" alt="">
   <div class="py-4 px-2 text-center md:text-left space-y-4">
     <figcaption class="font-medium text-ellipsis">
@@ -8,7 +12,7 @@
     </figcaption>
     <blockquote class="text-ellipsis">
       <p class="">
-        {{store.address}}
+        {{store | addressStore}}
       </p>
     </blockquote>
   </div>

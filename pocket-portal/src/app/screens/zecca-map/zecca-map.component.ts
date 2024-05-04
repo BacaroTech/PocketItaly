@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import * as L from 'leaflet';
-
-import { MapPocketReport } from '../../interfaces/models.interface';
-import { ZeccaService } from '../../services/zecca.service';
+import { MapPocketReport } from 'src/app/interfaces';
+import { ZeccaService } from 'src/app/services';
 import {
   purpleIcon,
   redIcon,
-} from '../../utils/icons';
+} from 'src/app/utils';
 
 L.Icon.Default.imagePath = 'assets/leaflet/';
 type LevelWarning = 'low' | 'high'

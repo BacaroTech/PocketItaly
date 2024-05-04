@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FactorySidebarComponent } from '../../components/factory-sidebar/factory-sidebar.component';
 import { RouterOutlet } from '@angular/router';
+
+import { FactorySidebarComponent } from 'src/app/components';
 
 @Component({
   selector: 'app-factory-home',

@@ -3,7 +3,21 @@ export interface FactoryItemStore {
   name: string;
   address: string;
   img: string;
+  docs: DocsStore[];
+  vat: string;
+  province: string;
+  city: string;
+  cap: string;
+  imgName: string;
 }
+
+export interface DocsStore {
+  id?: number;
+  name: string;
+  file: any;
+}
+
+export type CountStep = 1 | 2;
 
 type TradeType = "physic" | "online";
 type LevelReport = "high" | "low";
@@ -50,7 +64,7 @@ export interface RawPocketReport extends BasePocketReport {
   tradeType?: TradeType | null;
   user?: string | null;
   email?: string | null;
-  
+
   domain?: string | null;
   urlProduct?: string | null;
 }

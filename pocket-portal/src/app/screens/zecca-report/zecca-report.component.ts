@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import {
   PocketHeaderTable,
   PocketTableComponent,
-} from '../../components/pocket-table/pocket-table.component';
-import { ZeccaService } from '../../services/zecca.service';
+} from 'src/app/components/pocket-table';
+import { ZeccaService } from 'src/app/services';
+
 import { ManualPocketReportTable } from './zecca-report.interface';
 
 @Component({

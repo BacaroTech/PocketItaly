@@ -7,7 +7,7 @@ export * from './factory-create-store';
 export * from './factory-create-token';
  
 export * from './factory-dashboard';
- 
+export * from './factory-detail-store';
 export * from './factory-home';
  
 export * from './factory-profile';

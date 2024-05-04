@@ -131,6 +131,20 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'store/:id',
+        loadComponent: () =>
+          import('./screens/factory-detail-store/factory-detail-store.component').then(
+            (mod) => mod.FactoryDetailStoreComponent,
+          )
+      },
+      {
+        path: 'edit-store/:id',
+        loadComponent: () =>
+          import('./screens/factory-edit-store/factory-edit-store.component').then(
+            (mod) => mod.FactoryEditStoreComponent,
+          )
+      },
+      {
         path: 'create-token',
         loadComponent: () =>
           import('./screens/factory-create-token/factory-create-token.component').then(

@@ -6,43 +6,82 @@ import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
+import {
+  ActivatedRoute,
+  Router,
+} from '@angular/router';
 
 import { FactoryPageLayoutComponent } from 'src/app/components';
 import {
   CountStep,
   DocsStore,
+  FactoryItemStore,
 } from 'src/app/interfaces';
+import { FactoryStoresService } from 'src/app/services';
 import { FormFactoryUtils } from 'src/app/utils';
 
 @Component({
-  selector: 'app-factory-create-store',
+  selector: 'app-factory-edit-store',
   standalone: true,
   imports: [FactoryPageLayoutComponent, ReactiveFormsModule, CommonModule],
-  templateUrl: './factory-create-store.component.html',
-  styleUrl: './factory-create-store.component.css'
+  templateUrl: './factory-edit-store.component.html',
+  styleUrl: './factory-edit-store.component.css'
 })
-export class FactoryCreateStoreComponent {
+export class FactoryEditStoreComponent {
 
+  id: number | undefined;
+  store: FactoryItemStore | null | undefined = null;
+  form = new FormGroup({
+    'company-name': new FormControl(''),
+    'vat': new FormControl(''),
+    'address': new FormControl(''),
+    'city': new FormControl(''),
+    'province': new FormControl(''),
+    'cap': new FormControl(''),
+    'photo': new FormControl<DocsStore | null>(null),
+    'docs': new FormArray([]),
+  });
   createSuccess: boolean = false;
   step: CountStep = 1;
-  readonly subTitleCreation = "Completa il form per registrare un nuovo negozio";
+  readonly subTitleCreation = "Aggiorna i dati sulla tua attività";
   readonly subTitleCreated = "Operazione completata"
   get subTitle() {
     return this.createSuccess ? this.subTitleCreated : this.subTitleCreation;
   }
   imageSrc: string | ArrayBuffer | null = null;
 
-  form = new FormGroup({
-    'company-name': new FormControl(''),
-    'vat': new FormControl(''),
-    'address': new FormControl(''),
-    'province': new FormControl(''),
-    'city': new FormControl(''),
-    'cap': new FormControl(''),
-    'photo': new FormControl<DocsStore | null>(null),
-    'docs': new FormArray([]),
-  });
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: FactoryStoresService
+  ) { }
 
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = parseInt(params['id']);
+      if (this.id) {
+        this.service.getStores().subscribe((r) => {
+          this.store = r.find(_rItem => _rItem.id === this.id);
+          if (this.store) {
+            this.form.patchValue({
+              "company-name": this.store.name,
+              "vat": this.store.vat,
+              "address": this.store.address,
+              "province": this.store.province,
+              "city": this.store.city,
+              "cap": this.store.cap,
+              "photo": {
+                id: 1,
+                file: this.store.img,
+                name: this.store.imgName
+              }
+            })
+          }
+
+        })
+      }
+    })
+  }
   goNext() {
     this.step = FormFactoryUtils.next(this.step);
   }
@@ -88,10 +127,9 @@ export class FactoryCreateStoreComponent {
     return items['name']
   }
 
-  addStore() {
+  updateStore() {
     if (this.step == 2) {
       this.createSuccess = true;
     }
   }
 }
-

@@ -3,10 +3,8 @@ import { RouterOutlet } from '@angular/router';
 
 import {
   PortalSidebarComponent,
-} from '../../components/sidebar/sidebar.component';
-import {
   ZeccaNavbarComponent,
-} from '../../components/zecca-navbar/zecca-navbar.component';
+} from 'src/app/components';
 
 @Component({
   selector: 'app-zecca-home',
