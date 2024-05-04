@@ -1,16 +1,16 @@
 <app-factory-page-layout title="Nuovo Negozio"
                          [subTitle]="subTitle">
 
-  <form
-    *ngIf="!createSuccess;else createSuccessTemplate"
-    class="flex flex-col gap-3"
+  <form *ngIf="!createSuccess;else createSuccessTemplate"
+        class="flex flex-col gap-3"
         [formGroup]="form"
         (submit)="addStore()">
-    <div [ngSwitch]="step" class="w-full">
+    <div [ngSwitch]="step"
+         class="w-full">
       <div *ngSwitchCase="1"
            class="flex flex-col lg:flex-row gap-2">
         <div class="flex flex-col gap-2">
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="company-name"
                    id="company-name"
@@ -20,7 +20,7 @@
                  px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
                    placeholder="Ragione Sociale">
           </div>
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="vat"
                    id="vat"
@@ -30,7 +30,7 @@
                  px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
                    placeholder="Partita IVA">
           </div>
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="address"
                    id="address"
@@ -40,7 +40,7 @@
                  px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
                    placeholder="Indirizzo">
           </div>
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="city"
                    id="city"
@@ -50,7 +50,7 @@
                  px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
                    placeholder="Città">
           </div>
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="province"
                    id="province"
@@ -60,7 +60,7 @@
                  px-4 py-1.5 text-gray-800 shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-gray-7gray00 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-800 text-4xl sm:leading-6"
                    placeholder="Provincia">
           </div>
-          <div class="px-10">
+          <div class="mx-5 md:ml-0 md:mr-5">
             <input type="text"
                    name="cap"
                    id="cap"
@@ -98,10 +98,11 @@
                      class="hidden" />
             </label>
           </div>
-          <div *ngIf="imageSrc" class="p-2 flex justify-center overflow-hidden rounded-xl bg-gray-200">
+          <div *ngIf="imageSrc"
+               class="p-2 flex justify-center overflow-hidden rounded-xl bg-gray-200">
             <img class="w-72 object-cover"
-            [src]="imageSrc "
-            alt="">
+                 [src]="imageSrc "
+                 alt="">
           </div>
         </div>
       </div>
@@ -110,7 +111,7 @@
         <div class="w-1/2 flex flex-col items-center gap-2">
           <h4>Caricati</h4>
           <div *ngFor="let itemsArray of form.controls.docs.controls; let i = index">
-              {{getValue(itemsArray)}}
+            {{getValue(itemsArray)}}
           </div>
         </div>
         <div class="w-1/2 flex mt-20 lg:mt-0">

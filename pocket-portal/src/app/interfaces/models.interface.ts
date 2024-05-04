@@ -9,6 +9,14 @@ export interface FactoryItemBatch extends FactoryItemWarehouse {
   selected: boolean;
 }
 
+export interface FactoryCreateTokenItem {
+  productName: string;
+  category: string;
+  description: string;
+  serial: string;
+  photo: string;
+}
+
 export interface FactoryItemStore {
   id: number;
   name: string;

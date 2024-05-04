@@ -17,7 +17,11 @@ import { FormFactoryUtils } from 'src/app/utils';
 @Component({
   selector: 'app-factory-create-store',
   standalone: true,
-  imports: [FactoryPageLayoutComponent, ReactiveFormsModule, CommonModule],
+  imports: [
+    FactoryPageLayoutComponent,
+    ReactiveFormsModule,
+    CommonModule
+],
   templateUrl: './factory-create-store.component.html',
   styleUrl: './factory-create-store.component.css'
 })
