@@ -1,6 +1,6 @@
 export * from './factory-check-serial';
  
-export * from './factory-create-product';
+export * from './factory-create-batch';
  
 export * from './factory-create-store';
  

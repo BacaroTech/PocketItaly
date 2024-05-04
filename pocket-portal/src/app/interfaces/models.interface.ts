@@ -5,6 +5,9 @@ export interface FactoryItemWarehouse {
   img: string;
 }
 
+export interface FactoryItemBatch extends FactoryItemWarehouse {
+  selected: boolean;
+}
 
 export interface FactoryItemStore {
   id: number;

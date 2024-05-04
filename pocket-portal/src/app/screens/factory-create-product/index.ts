@@ -1,1 +1,0 @@
-export * from './factory-create-product.component';

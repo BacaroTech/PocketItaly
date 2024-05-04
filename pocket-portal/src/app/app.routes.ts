@@ -119,8 +119,8 @@ export const routes: Routes = [
       {
         path: 'create-product',
         loadComponent: () =>
-          import('./screens/factory-create-product/factory-create-product.component').then(
-            (mod) => mod.FactoryCreateProductComponent,
+          import('./screens/factory-create-batch/factory-create-batch.component').then(
+            (mod) => mod.FactoryCreateBatchComponent,
           )
       },
       {

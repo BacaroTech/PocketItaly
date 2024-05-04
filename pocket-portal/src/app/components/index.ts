@@ -13,3 +13,7 @@ export * from './sidebar';
 export * from './zecca-navbar';
  
 export * from './zecca-report-detail';
+
+export * from './factory-create-batch-item';
+
+export * from './factory-warehouse-item';
