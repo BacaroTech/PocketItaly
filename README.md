@@ -215,10 +215,6 @@ Questa architettura sfrutta AWS per garantire affidabilità e robustezza, consen
 
 <img src="Interfacce.png" alt="image" width="900" height="auto">
 
-## Descrizione del Sistema
-Questo documento descrive le interfacce esposte utilizzate per la gestione dei prodotti, degli intermediari e dei clienti all'interno del nostro sistema.
-
-## Componenti del Sistema
 1. **Interfaccia Impresa**:
    - Gestisce prodotti e lotti.
    - Crea token per i prodotti.
@@ -231,13 +227,11 @@ Questo documento descrive le interfacce esposte utilizzate per la gestione dei p
 4. **Interfaccia Amministrativa**:
    - Gestisce le imprese e i report di segnalazione.
 
-
-
-# Logica Token
+# Funzionamento Token
 
 <img src="FlussoProdIntCos.png" alt="image" width="900" height="auto">
 
-## Componenti del Flusso di distribuzione
+## Flusso di distribuzione
 1. **Produttore**:
    - Genera e firma il token, garantendo l'origine autentica e l'integrità del prodotto.
 2. **Intermediario**:
@@ -254,7 +248,7 @@ Questo documento descrive le interfacce esposte utilizzate per la gestione dei p
 
 <img src="FlussoToken.png" alt="image" width="900" height="auto">
 
-## Diagramma del Flusso di Validazione
+## Flusso di Validazione
 1. **Inizio Scambio**:
    - Utente A inizia l'invio del token a Utente B.
 2. **Ricezione e Validazione**:
