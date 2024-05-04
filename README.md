@@ -49,7 +49,11 @@ Per simulare la login è sufficiente inserire nel campo della email un dei segue
 <img src="image-5.png" alt="image" width="300" height="auto">
 
 
+# Sorgenti
+Di seguito come installare e avviare i tre sorgenti
+
 ## Mobile
+
 ```
 cd PocketMobile
 ```
@@ -139,3 +143,23 @@ Passaggi
 sudo gem install cocoapods
 ```
 
+
+
+## Portale
+Il portale è un applicativo angular
+
+```
+cd pocket-portal
+```
+
+Da fare solo una volta
+
+```
+npm install
+```
+
+Avvio in locale
+
+```
+npm start
+```
