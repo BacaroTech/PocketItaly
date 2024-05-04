@@ -166,6 +166,13 @@ export const routes: Routes = [
           )
       },
       {
+        path: 'get-batch',
+        loadComponent: () =>
+          import('./screens/factory-get-batch/factory-get-batch.component').then(
+            (mod) => mod.FactoryGetBatchComponent,
+          )
+      },
+      {
         path: '',
         pathMatch: 'full',
         redirectTo: 'home',

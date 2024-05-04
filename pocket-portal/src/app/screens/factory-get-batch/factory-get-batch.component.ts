@@ -8,28 +8,28 @@ import {
 
 import { FactoryPageLayoutComponent } from 'src/app/components';
 
-type CheckSerialResult = "success" | "fail" | "not-checked";
+type CheckSerialResult = "success" | "fail" | "not-done";
+
 @Component({
-  selector: 'app-factory-check-serial',
+  selector: 'app-factory-get-batch',
   standalone: true,
   imports: [
     CommonModule,
     FactoryPageLayoutComponent,
     ReactiveFormsModule
   ],
-  templateUrl: './factory-check-serial.component.html',
-  styleUrl: './factory-check-serial.component.css'
+  templateUrl: './factory-get-batch.component.html',
+  styleUrl: './factory-get-batch.component.css'
 })
-export class FactoryCheckSerialComponent {
+export class FactoryGetBatchComponent {
   form = new FormGroup({
     serial: new FormControl(''),
   });
 
-  checkDone: CheckSerialResult = "not-checked";
+  checkDone: CheckSerialResult = "not-done";
 
   checkCoupon() {
     const serial = this.form?.value.serial;
     this.checkDone = "success";
   }
-
 }

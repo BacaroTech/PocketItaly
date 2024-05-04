@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { FactoryItemStore } from '../interfaces';
+import { FactoryItemStore } from 'src/app/interfaces';
 
 @Injectable({
   providedIn: 'root'

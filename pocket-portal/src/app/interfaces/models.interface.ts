@@ -1,3 +1,11 @@
+export interface FactoryItemWarehouse {
+  id: number;
+  name: string;
+  description: string;
+  img: string;
+}
+
+
 export interface FactoryItemStore {
   id: number;
   name: string;

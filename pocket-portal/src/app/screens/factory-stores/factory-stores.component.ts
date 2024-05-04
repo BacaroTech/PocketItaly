@@ -17,12 +17,13 @@ import { FactoryStoresService } from 'src/app/services';
   styleUrl: './factory-stores.component.css'
 })
 export class FactoryStoresComponent {
+  
+  storesList: FactoryItemStore[] = [];
+  constructor(
+    private router: Router,
+    private service: FactoryStoresService
+  ) { }
 
-  constructor(private router: Router, private service: FactoryStoresService) { }
-
-  storesList: FactoryItemStore[] = [
-
-  ];
   ngAfterViewInit() {
     this.service.getStores().subscribe((r) => {
       this.storesList = r
@@ -33,7 +34,6 @@ export class FactoryStoresComponent {
   }
 
   addStore() {
-    console.log("crete")
     this.router.navigateByUrl('factory/create-store')
   }
 

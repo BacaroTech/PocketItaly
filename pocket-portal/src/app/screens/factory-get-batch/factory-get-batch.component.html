@@ -1,0 +1,36 @@
+<app-factory-page-layout title="Riscuoti Lotto"
+                         subTitle="Da questa schermata puoi riscattare un lotto con tutti i suoi token associati">
+    <div [ngSwitch]="checkDone">
+        <form *ngSwitchCase="'not-done'"
+              [formGroup]="form"
+              (submit)="checkCoupon()">
+            <div class="mt-10 flex flex-col items-center justify-center gap-2">
+                <div class="px-10">
+                    <input type="text"
+                           name="serial"
+                           id="serial"
+                           formControlName="serial"
+                           class="block w-full rounded-full border-0 px-10 lg:px-20 py-2 text-black shadow-sm ring-1 ring-inset ring-pocket_yellow_p-300 placeholder:text-pocket_yellow_p-700 focus:ring-2 focus:ring-inset focus:ring-pocket_yellow_p-600 text-4xl sm:leading-6 bg-pocket_yellow_p-300"
+                           placeholder="Inserisci il numero seriale del lotto">
+                </div>
+
+                <button type="submit"
+                        class="mt-10 flex justify-center rounded-full bg-pocket_yellow px-20 py-5 text-[32px] font-normal leading-8 text-black shadow-sm hover:bg-pocket_yellow_p-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pocket_yellow_p-600">
+                    Riscuoti Lotto
+                </button>
+            </div>
+        </form>
+        <div *ngSwitchCase="'success'"
+             class="mt-10 flex flex-col items-center justify-center gap-2">
+            <img class="w-40 md:w-80 p-5 "
+                 src="assets/img/check-ok.png" />
+            <h1 class="text-[32px]">Lotto ottenuto correttamente</h1>
+        </div>
+        <div *ngSwitchCase="'fail'"
+             class="mt-10 flex flex-col items-center justify-center gap-2">
+            <img class="w-40 md:w-80 p-5 "
+                 src="assets/img/check-fail.png" />
+            <h1 class="text-[32px]">Si è verificato un errore, riprovare</h1>
+        </div>
+    </div>
+</app-factory-page-layout>

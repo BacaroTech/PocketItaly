@@ -1,0 +1,20 @@
+[
+    {
+        "id" : 1,
+        "name": "SNEAKERS BRUCE SABBIA",
+        "description": "Sneakers stringata con suola running.",
+        "img": "assets/img/item-warehouse.jpg"
+    },
+    {
+        "id" : 2,
+        "name": "SNEAKERS BRUCE SABBIA",
+        "description": "Sneakers stringata con suola running.",
+        "img": "assets/img/item-warehouse.jpg"
+    },
+    {
+        "id" : 3,
+        "name": "SNEAKERS BRUCE SABBIA",
+        "description": "Sneakers stringata con suola running.",
+        "img": "assets/img/item-warehouse.jpg"
+    }
+]
