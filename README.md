@@ -98,8 +98,6 @@ Questa architettura sfrutta AWS per garantire affidabilità e robustezza, consen
 - **ETL e S3 Bucket**: I dati sono aggregati e trasformati attraverso processi ETL e salvati in un bucket S3 dedicato.
 - **Athena e SageMaker**: Athena permette di interrogare i dati nel bucket S3. SageMaker è utilizzato per creare e addestrare modelli di machine learning basati su questi dati.
 
-In conclusione, questa architettura su AWS non solo assicura alta disponibilità e resilienza, ma integra anche soluzioni avanzate per la sicurezza, la gestione delle API, il caching e l'analisi dei dati, rendendo l'intera soluzione scalabile, sicura e efficiente.
-
 
 
 # Sorgenti
