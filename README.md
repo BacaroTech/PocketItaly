@@ -11,11 +11,20 @@ Ogni volta che un utente genera report(passivo) o invia una segnalazione(attivo)
 
 Infine, l’applicazione prevede una parte di istruzione dove l’utente può informarsi sulle ultime notizie sul tema della contraffazione e apprendere delle nozioni riguardo tale argomento, oltre alla possibibilità di riscattare dei codici sconto da usare nei negozi affliati dopo N scansioni, dove N è incognito agli utenti
 
+## Pitch di presentazione
+https://www.youtube.com/watch?v=QN1uzQ-G_88
+
 ## Figma app mobile 
 https://www.figma.com/file/5zGqQkbv1qP0dlcD99nf6j/Pocket-Italy-App?type=design&t=XzP8tLn4shKsSsmi-6
 
+## Manuale d'uso app mobile
+https://youtu.be/_7EbR2gqjTo
+
 ## Figma portale web
 https://www.figma.com/file/RDT5TnesSqZ2rihng3ypCT/Pocket-Italy-Portal?type=design&t=XzP8tLn4shKsSsmi-6
+
+## Manuale d'uso portale web
+https://www.youtube.com/watch?v=HMfBnAkeHYA
 
 ## Sorgenti Backend
 https://github.com/BacaroTech/PocketItaly-Server
